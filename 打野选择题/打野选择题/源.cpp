@@ -131,14 +131,76 @@ using namespace std;
 //}
 
 
+//day5/1
+//bool containsDuplicate(vector<int>& nums) {
+//	// int arr[1200000005] = { 0 };
+//	// int arr2[1200000005] = { 0 };
+//	// int len = nums.size();
+//	// int i = 0;
+//	// while(i < len){
+//	//     if(nums[i] < 0){
+//	//         if(++arr2[-nums[i++]] > 1){
+//	//             return true;
+//	//         }
+//	//     }
+//	//     else if(++arr[nums[i++]] > 1){
+//	//         return true;
+//	//     }
+//	// }
+//	// return false;
+//	map<int, int> map;
+//	for (int i = 0; i < nums.size(); i++)
+//	if (map.count(nums[i]) != NULL)
+//		return true;
+//	else
+//		map[nums[i]] += 1;
+//	return false;
+//}
 
 
+bool isLongPressedName(string name, string typed) {
+	int nlen = name.size() - 1;
+	int tlen = typed.size() - 1;
+	while (nlen > 0 && tlen > 0){
+		//如果name中又连续的字母,则连续字母的第一个字母只需要比较一次
+		//不连续的情况
+		if (name[nlen] != name[nlen - 1]){
+			if (name[nlen] != typed[tlen]){
+				return false;
+			}
+			while (name[nlen] == typed[tlen] && tlen > 0){
+				--tlen;
+			}
+			--nlen;
+		}
+		//连续的情况
+		else{
+			if (name[nlen] != typed[tlen]){
+				return false;
+			}
+			else{
+				--tlen;
+				--nlen;
+			}
 
+		}
 
-
+	}
+	//name第一个字母与typed剩下的字母比较
+	while (name[nlen] == typed[tlen] && tlen >= 0){
+		--tlen;
+	}
+	if (tlen > 0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
 
 int main(){
-
-	
+	string name("alex");
+	string typed("aaleex");
+	isLongPressedName(name, typed);
 	return 0;
 }
