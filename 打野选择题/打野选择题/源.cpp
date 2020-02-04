@@ -84,6 +84,59 @@ using namespace std;
 //	}
 //	return false;
 //}
+
+
+
+//day4/1
+//int lengthOfLastWord(string s) {
+//	int pos = s.size() - 1;
+//	int i = 0;
+//	int count = 0;
+//	int prev = 0;
+//	int cur = 0;
+//	while (i <= pos){
+//		if (s[i] != ' '){
+//			while (s[i] != ' ' && i <= pos){
+//				++count;
+//				++i;
+//			}
+//			prev = cur;
+//			cur = count;
+//			count = 0;
+//		}
+//		++i;
+//	}
+//	return cur;
+//}
+
+//day4/2
+//void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+//	int a = m - 1;
+//	int b = n - 1;
+//	while (a >= 0 && b >= 0){
+//		//´ÓºóÍùÇ°ÅÅ
+//		if (nums1[a] >= nums2[b]){
+//			nums1[a + b + 1] = nums1[a];
+//			--a;
+//		}
+//		else if (nums1[a] < nums2[b]){
+//			nums1[a + b + 1] = nums2[b];
+//			--b;
+//		}
+//	}
+//	while (b >= 0){
+//		nums1[b] = nums2[b];
+//		--b;
+//	}
+//}
+
+
+
+
+
+
+
+
 int main(){
 
 	
