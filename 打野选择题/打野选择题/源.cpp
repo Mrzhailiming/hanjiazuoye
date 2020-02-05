@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <vector>
 using namespace std;
 
 
@@ -303,10 +304,76 @@ using namespace std;
 //}
 
 
+//
+//day8/1
+//vector<int> plusOne(vector<int>& digits) {
+//	int len = digits.size();
+//	int pos = len - 1;
+//	while (pos >= 0){
+//		if (digits[pos] == 9){
+//			digits[pos] = 0;
+//			--pos;
+//		}
+//		else{
+//			++digits[pos];
+//			return digits;
+//		}
+//	}
+//	digits.push_back(0);
+//	digits[0] = 1;
+//	return digits;
+//}
+
+
+//day8/2
+//int thirdMax(vector<int>& nums) {
+//	int max = INT_MIN, mid = INT_MIN, min = INT_MIN;
+//	int flag = 0;
+//	int len = nums.size();
+//	if (len == 1){
+//		return nums[0];
+//	}
+//	if (len == 2){
+//		return nums[0] > nums[1] ? nums[0] : nums[1];
+//	}
+//	while (len--){
+//		if (nums[len] == INT_MIN){
+//			flag = 1;
+//		}
+//		if (nums[len] > min && nums[len] != min &&
+//			nums[len] != mid && nums[len] != max){
+//			min = nums[len];
+//			if (min > mid){
+//				swap(min, mid);
+//				if (mid > max){
+//					swap(mid, max);
+//				}
+//			}
+//		}
+//	}
+//	//数组没有INT_MIN
+//	if (flag == 0){
+//		if (min == INT_MIN){
+//			return max;
+//		}
+//		else{
+//			return min;
+//		}
+//	}
+//	//数组中有INT_MIN
+//	else{
+//		if (mid == INT_MIN){
+//			return max;
+//		}
+//		else{
+//			return min;
+//		}
+//	}
+//}
 
 int main(){
-	vector<int> nums = { 1, 7, 3, 6, 5, 6 };
-	int ret = pivotIndex(nums);
+	vector<int> nums = { 2, 2, 3, 1};
+	int ret = thirdMax(nums);
 	cout << ret << endl;
 	/*string name("plpkoh");
 	string typed("plppkkh");
