@@ -264,6 +264,9 @@ using namespace std;
 //	return S;
 //}
 
+
+
+
 int main(){
 	string name("plpkoh");
 	string typed("plppkkh");
