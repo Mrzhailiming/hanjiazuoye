@@ -157,50 +157,118 @@ using namespace std;
 //	return false;
 //}
 
+//day5/2
+//bool isLongPressedName(string name, string typed) {
+//	int nlen = name.size();
+//	int tlen = typed.size();
+//	if (nlen > tlen){
+//		return false;
+//	}
+//	int pos1 = 0;
+//	int pos2 = 0;
+//	while (pos1 < nlen && pos2 < tlen){
+//		if (name[pos1] != typed[pos2]){
+//			return false;
+//		}
+//		//比较最后一个字母时,跳出
+//		if (pos1 + 1 == nlen){
+//			break;
+//		}
+//		//name中字母连续的情况
+//		if (name[pos1] == name[pos1 + 1]){
+//			if (name[pos1] == typed[pos2]){
+//				++pos1;
+//				++pos2;
+//			}
+//			else{
+//				return false;
+//			}
+//		}
+//		//name中字母不连续的情况
+//		else{
+//			while (name[pos1] == typed[pos2]){
+//				++pos2;
+//			}
+//			++pos1;
+//		}
+//	}
+//	//比较name最后一个字母
+//	if (name[pos1] == typed[pos2]){
+//		return true;
+//	}
+//	else{
+//		return false;
+//	}
+//
+//}
 
-bool isLongPressedName(string name, string typed) {
-	int nlen = name.size() - 1;
-	int tlen = typed.size() - 1;
-	while (nlen > 0 && tlen > 0){
-		//如果name中又连续的字母,则连续字母的第一个字母只需要比较一次
-		//不连续的情况
-		if (name[nlen] != name[nlen - 1]){
-			if (name[nlen] != typed[tlen]){
-				return false;
-			}
-			while (name[nlen] == typed[tlen] && tlen > 0){
-				--tlen;
-			}
-			--nlen;
-		}
-		//连续的情况
-		else{
-			if (name[nlen] != typed[tlen]){
-				return false;
-			}
-			else{
-				--tlen;
-				--nlen;
-			}
+//day6/1
+//vector<int> sortedSquares(vector<int>& A) {
+//
+//	int arr1[10000] = { 0 };
+//	int arr2[10000] = { 0 };
+//	int len = A.size();
+//	int pos1 = 0, pos2 = 0;
+//	//arr1降序排列
+//	//arr2升序排列
+//	while (len--){
+//		if (A[len] > 0){
+//			arr1[pos1++] = A[len] * A[len];
+//		}
+//		else{
+//			arr2[pos2++] = A[len] * A[len];
+//		}
+//	}
+//	--pos1;
+//	--pos2;
+//	int i = 0;
+//	int pos = 0;
+//	//
+//	while (i <= pos2 && pos1 >= 0){
+//		if (arr1[pos1] > arr2[i]){
+//			A[pos++] = arr2[i++];
+//		}
+//		else{
+//			A[pos++] = arr1[pos1--];
+//		}
+//	}
+//	while (i <= pos2){
+//		A[pos++] = arr2[i++];
+//	}
+//	while (pos1 >= 0){
+//		A[pos++] = arr1[pos1--];
+//	}
+//	return A;
+//}
 
-		}
-
-	}
-	//name第一个字母与typed剩下的字母比较
-	while (name[nlen] == typed[tlen] && tlen >= 0){
-		--tlen;
-	}
-	if (tlen > 0){
-		return false;
-	}
-	else{
-		return true;
-	}
-}
+//day6/2
+//string reverseOnlyLetters(string S) {
+//	int end = S.size() - 1;
+//	int begin = 0;
+//	while (begin < end){
+//		while (begin < end && S[begin] < 'A' || (S[begin] > 'Z' &&
+//			S[begin] < 'a') || S[begin] > 'z'){
+//			++begin;
+//		}
+//		while (begin < end && S[end] < 'A' || (S[end] > 'Z' &&
+//			S[end] < 'a') || S[end] > 'z'){
+//			--end;
+//		}
+//		if (begin < end){
+//			swap(S[begin], S[end]);
+//			--end;
+//			++begin;
+//		}
+//
+//	}
+//	return S;
+//}
 
 int main(){
-	string name("alex");
-	string typed("aaleex");
-	isLongPressedName(name, typed);
+	string name("plpkoh");
+	string typed("plppkkh");
+	int n = 2;
+	n += n -= n * n;
+	//isLongPressedName(name, typed);
 	return 0;
 }
