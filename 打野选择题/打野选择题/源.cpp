@@ -371,10 +371,115 @@ using namespace std;
 //	}
 //}
 
+//day9/1
+//vector<int> twoSum(vector<int>& nums, int target) {
+//	vector<int> arr;
+//	int len = nums.size();
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < len; ++i){
+//		for (j = i + 1; j < len; ++j){
+//			if (nums[i] + nums[j] == target){
+//				arr.push_back(i);
+//				arr.push_back(j);
+//				return arr;
+//			}
+//		}
+//	}
+//	return arr;
+//}
+
+
+//string addBinary(string a, string b) {
+//	string res;
+//	bool carry = false; //进位标志
+//	if (a.size() > b.size())
+//		a.swap(b);
+//	int gap = b.size() - a.size();
+//	for (int i = 0; i < gap; ++i) //将两个字符串长度相等化
+//		a.insert(0, "0");
+//	for (int i = a.size() - 1; i >= 0; --i)
+//	{
+//		if ((a[i] ^ b[i]) == 1) //0 1或者1 0
+//			res.insert(0, carry == true ? "0" : "1");
+//		else //0 0 或者 1 1
+//		{
+//			res.insert(res.begin(), carry == true ? '1' : '0');
+//			carry = a[i] == '1' ? true : false;
+//		}
+//	}
+//	if (carry) //加上最终的进位
+//		res.insert(res.begin(), '1');
+//	return res;
+//}
+
+//day9/2
+//string addBinary(string a, string b) {
+//	int alen = a.size();
+//	int blen = b.size();
+//	//让a最长
+//	if (blen > alen){
+//		swap(a, b);
+//	}
+//	//短的字符串前面补 '0'
+//	int i = 0;
+//	int count = blen > alen ? blen - alen : alen - blen;
+//	for (i = 0; i < count; ++i){
+//		b.insert(b.begin(), '0');
+//	}
+//	//存放相加后的字符串
+//	string tmp;
+//	//进位标志
+//	int flag = 0;
+//	for (i = a.size() - 1; i >= 0; --i){
+//		//'1' '0' 或 '0' '1'
+//		if ((a[i] ^ b[i]) == 1){
+//			//如果上次有进位,则'1' 与 '1' 相加进位,本位为 '0'
+//			tmp.insert(tmp.begin(), flag ? '0' : '1');
+//		}
+//		//'1' '1' 或 '0' '0'
+//		else{
+//			//如果上次有进位,则'1' 与 '1' + '1' 相加进位,本位为 '1'
+//			//或者 '1' 与 '0' + '0' 相加, 本位为 '1'
+//			tmp.insert(tmp.begin(), flag ? '1' : '0');
+//			//在这里判断进位的情况
+//			flag = a[i] == '1' ? 1 : 0;
+//		}
+//	}
+//	if (flag){
+//		tmp.insert(tmp.begin(), '1');
+//	}
+//	return tmp;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main(){
-	vector<int> nums = { 2, 2, 3, 1};
+	string a("11");
+	string b("1");
+	addBinary(a, b);
+
+
+
+
+
+
+
+
+	/*vector<int> nums = { 2, 2, 3, 1};
 	int ret = thirdMax(nums);
-	cout << ret << endl;
+	cout << ret << endl;*/
 	/*string name("plpkoh");
 	string typed("plppkkh");
 	int n = 2;
