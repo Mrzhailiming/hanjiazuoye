@@ -264,14 +264,54 @@ using namespace std;
 //	return S;
 //}
 
+//day7/1
+//vector<int> sortArrayByParity(vector<int>& A) {
+//	int end = A.size() - 1;
+//	int begin = 0;
+//	while (begin < end){
+//		if (A[begin] % 2 == 0){
+//			++begin;
+//		}
+//		if (A[end] % 2 == 1){
+//			--end;
+//		}
+//		if (begin < end){
+//			swap(A[end], A[begin]);
+//		}
+//	}
+//	return A;
+//}
+
+
+//day7/2
+//int pivotIndex(vector<int>& nums) {
+//	int mid = 0;
+//	int max = 0;
+//	int len = nums.size();
+//	int pos = len - 1;
+//	for (; pos >= 0; --pos){
+//		max += nums[pos];
+//	}
+//	pos = 0;
+//	for (; pos < len; ++pos){
+//		mid += nums[pos];
+//		if ((mid - nums[pos]) * 2 == (max - nums[pos])){
+//			return pos;
+//		}
+//	}
+//	return -1;
+//}
 
 
 
 int main(){
-	string name("plpkoh");
+	vector<int> nums = { 1, 7, 3, 6, 5, 6 };
+	int ret = pivotIndex(nums);
+	cout << ret << endl;
+	/*string name("plpkoh");
 	string typed("plppkkh");
 	int n = 2;
-	n += n -= n * n;
+	n += n -= n * n;*/
 	//isLongPressedName(name, typed);
 	return 0;
 }
