@@ -506,55 +506,157 @@ using namespace std;
 //		return ret;
 //}
 
-vector<int> searchRange(vector<int>& nums, int target) {
-	vector<int> arr = { -1, -1 };
-	int len = nums.size();
-	if (len == 0){
-		return arr;
-	}
-	if (len == 1 && nums[0] == target){
-		return arr = { 0, 0 };
-	}
-	int begin = 0;
-	int end = len - 1;
-	int mid = 0;
-	while (begin <= end){
-		mid = begin + (end - begin) / 2;
-		if (target < nums[mid]){
-			end = mid - 1;
-		}
-		else if (target > nums[mid]){
-			begin = mid + 1;
-		}
-		else{
-			begin = end = mid;
-			while (begin >= 0 && nums[begin] == target){
-				--begin;
-			}
-			while (end < len && nums[end] == target){
-				++end;
-			}
-			arr = { begin + 1, end };
-			return arr;
-		}
-	}
-	return arr;
-}
+//day10/2
+//vector<int> searchRange(vector<int>& nums, int target) {
+//	vector<int> arr = { -1, -1 };
+//	int len = nums.size();
+//	if (len == 0){
+//		return arr;
+//	}
+//	if (len == 1 && nums[0] == target){
+//		return arr = { 0, 0 };
+//	}
+//	int begin = 0;
+//	int end = len - 1;
+//	int mid = 0;
+//	while (begin <= end){
+//		mid = begin + (end - begin) / 2;
+//		if (target < nums[mid]){
+//			end = mid - 1;
+//		}
+//		else if (target > nums[mid]){
+//			begin = mid + 1;
+//		}
+//		else{
+//			begin = end = mid;
+//			while (begin >= 0 && nums[begin] == target){
+//				--begin;
+//			}
+//			while (end < len && nums[end] == target){
+//				++end;
+//			}
+//			arr = { begin + 1, end };
+//			return arr;
+//		}
+//	}
+//	return arr;
+//}
+
+
+//day11/1
+//bool isPalindrome(string s) {
+//	int len = s.size();
+//	string tmp;
+//	int begin = 0;
+//	int end = len - 1;
+//	if (len == 0 || len == 1){
+//		return true;
+//	}
+//	//把字母数字放到tmp中,并把大写转小写
+//	while (begin < len){
+//		char c = s[begin];
+//		if ((c >= '0' && c <= '9')
+//			|| (c >= 'a' && c <= 'z')){
+//			tmp += c;
+//		}
+//		if (c >= 'A' && c <= 'Z'){
+//			tmp += tolower(c);
+//		}
+//		++begin;
+//	}
+//	//比较
+//	begin = 0;
+//	end = tmp.size() - 1;
+//	while (begin < end){
+//		char left = tmp[begin++];
+//		char right = tmp[end--];
+//		if (left == right){
+//			;
+//		}
+//		else{
+//			return false;
+//		}
+//	}
+//	return true;
+//}
+
+//day11/2
+//int compress(vector<char>& chars) {
+//	int len = chars.size();
+//	if (len == 1){
+//		return 1;
+//	}
+//	int pos = 0;
+//	char cur = '0';
+//	int count = 0;
+//	int cut = 0;
+//	int begin = 0;
+//	//count有几位
+//	int flag = 10;
+//	int i = 1;
+//	int newpos = 0;
+//	while (pos < len){
+//		cur = chars[pos];
+//		//记录开始的位置
+//		begin = pos;
+//		//计数
+//		while (pos < len && cur == chars[pos]){
+//			++count;
+//			++pos;
+//			//count发生进位,i+1
+//			if (count >= flag){
+//				flag *= 10;
+//				++i;
+//			}
+//		}
+//		//count > 1 才需要压缩
+//		if (count > 1){
+//			chars[newpos] = cur;
+//			//压缩的个数
+//			cut += count - i - 1;
+//			//如果i > 1
+//			if (i > 1){
+//				int j = 0;
+//				for (j = 0; j < i; ++j){
+//					int x = i - j - 1;
+//					int y = 1;
+//					while (x--){
+//						y *= 10;
+//					}
+//					chars[newpos + j + 1] =
+//						(count / y) % 10 + '0';
+//				}
+//			}
+//			else{
+//				chars[newpos + 1] = count % 10 + '0';
+//			}
+//			newpos += (i + 1);
+//		}
+//		//count = 1
+//		else{
+//			chars[newpos] = cur;
+//			newpos += 1;
+//		}
+//		
+//		i = 1;
+//		count = 0;
+//		flag = 10;
+//	}
+//	return len - cut;
+//}
 
 int main(){
-	vector<int> nums = { 1, 4 };
-	searchRange(nums, 4);
+	vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
+	compress(chars);
 
 
 
 
 
-
-
-
-
-
-
+	/*string str("A man, a plan, a canal: Panama");
+	isPalindrome(str);*/
+	/*vector<int> nums = { 1, 4 };
+	searchRange(nums, 4);*/
 	/*string a("  000000012121");
 	myAtoi(a);*/
 	//string a("42");
