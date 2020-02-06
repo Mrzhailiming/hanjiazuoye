@@ -452,31 +452,71 @@ using namespace std;
 //	return tmp;
 //}
 
-
-
-
-
-
-
-
-
-
-
+//day10/1
+//int myAtoi(string str) {
+//	long int ret = 0;
+//	int len = str.size();
+//	//字符串为空
+//	if (len == 0){
+//		return 0;
+//	}
+//	int pos = 0;
+//	//判断正负的标志
+//	int flag = 0;
+//	//找到第一个非空的字符
+//	while (str[pos] == ' '){
+//		++pos;
+//	}
+//	//判断第一个非空字符
+//	//不为 -
+//	if (str[pos] == '-'){
+//		++pos;
+//		flag = 1;
+//	}
+//	//不为 +
+//	else if (str[pos] == '+'){
+//		++pos;
+//	}
+//	//不为数字
+//	else if (str[pos] < '0' || str[pos] > '9'){
+//		return 0;
+//	}
+//	//正负号后跟的不是数字
+//	if (str[pos] < '0' || str[pos] > '9'){
+//		return 0;
+//	}
+//	//从第一个数字开始相加,加到不为数字为止
+//	while (pos < len &&str[pos] - '0' >= 0 &&
+//		str[pos] - '0' <= 9){
+//		if (ret * 10 + str[pos] - '0' > INT_MAX){
+//			if (flag){
+//				return INT_MIN;
+//			}
+//			else{
+//				return INT_MAX;
+//			}
+//		}
+//		ret = ret * 10 + str[pos] - '0';
+//		++pos;
+//	}
+//	if (flag){
+//		return -ret;
+//	}
+//	else
+//		return ret;
+//}
 
 
 
 int main(){
-	string a("11");
-	string b("1");
-	addBinary(a, b);
+	string a("  000000012121");
+	myAtoi(a);
 
 
 
-
-
-
-
-
+	//string a("42");
+	//string b("1");
+	//addBinary(a, b);
 	/*vector<int> nums = { 2, 2, 3, 1};
 	int ret = thirdMax(nums);
 	cout << ret << endl;*/
