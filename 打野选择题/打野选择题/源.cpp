@@ -506,14 +506,57 @@ using namespace std;
 //		return ret;
 //}
 
-
+vector<int> searchRange(vector<int>& nums, int target) {
+	vector<int> arr = { -1, -1 };
+	int len = nums.size();
+	if (len == 0){
+		return arr;
+	}
+	if (len == 1 && nums[0] == target){
+		return arr = { 0, 0 };
+	}
+	int begin = 0;
+	int end = len - 1;
+	int mid = 0;
+	while (begin <= end){
+		mid = begin + (end - begin) / 2;
+		if (target < nums[mid]){
+			end = mid - 1;
+		}
+		else if (target > nums[mid]){
+			begin = mid + 1;
+		}
+		else{
+			begin = end = mid;
+			while (begin >= 0 && nums[begin] == target){
+				--begin;
+			}
+			while (end < len && nums[end] == target){
+				++end;
+			}
+			arr = { begin + 1, end };
+			return arr;
+		}
+	}
+	return arr;
+}
 
 int main(){
-	string a("  000000012121");
-	myAtoi(a);
+	vector<int> nums = { 1, 4 };
+	searchRange(nums, 4);
 
 
 
+
+
+
+
+
+
+
+
+	/*string a("  000000012121");
+	myAtoi(a);*/
 	//string a("42");
 	//string b("1");
 	//addBinary(a, b);
