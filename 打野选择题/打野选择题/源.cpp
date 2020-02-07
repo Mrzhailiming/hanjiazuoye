@@ -748,6 +748,49 @@ using namespace std;
 //	return ret;
 //}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//day14/1
+//vector<int> rightSideView(TreeNode* root) {
+//	vector<int> ret;
+//	queue<TreeNode*> q;
+//	if (root == NULL){
+//		return ret;
+//	}
+//	q.push(root);
+//	TreeNode* cur;
+//	while (q.empty() != 1){
+//		ret.push_back(q.back()->val);
+//		int len = q.size();
+//		int i = 0;
+//		for (i = 0; i < len; ++i){
+//			cur = q.front();
+//			q.pop();
+//			if (cur->left){
+//				q.push(cur->left);
+//			}
+//			if (cur->right){
+//				q.push(cur->right);
+//			}
+//		}
+//	}
+//	return ret;
+//}
+
 int main(){
 
 
