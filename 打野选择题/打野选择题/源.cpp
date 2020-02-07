@@ -732,11 +732,26 @@ using namespace std;
 //}
 
 
+//day13/1
+//vector<vector<int>> subsets(vector<int>& nums) {
+//	vector<vector<int>> ret;
+//	ret.push_back({});
+//	for (auto a : nums){
+//		int len = ret.size();
+//		int i = 0;
+//		for (i = 0; i < len; ++i){
+//			vector<int> tmp = ret[i];
+//			tmp.push_back(a);
+//			ret.push_back(tmp);
+//		}
+//	}
+//	return ret;
+//}
 
 int main(){
 
 
-
+	short i = 65537;
 	//vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
 	//findUnsortedSubarray(nums);
 	/*vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
