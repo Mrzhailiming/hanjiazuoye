@@ -695,18 +695,50 @@ using namespace std;
 //}
 
 
-
-
-
+//day12/2
+//
+//int evalRPN(vector<string>& tokens) {
+//	stack<int> s;
+//	for (const auto& cur : tokens){
+//		if (cur == "+"
+//			|| cur == "-"
+//			|| cur == "/"
+//			|| cur == "*"){
+//			int right = s.top();
+//			s.pop();
+//			int left = s.top();
+//			s.pop();
+//			switch (cur[0]){
+//			case '+':
+//				s.push(left + right);
+//				break;
+//			case '-':
+//				s.push(left - right);
+//				break;
+//			case '*':
+//				s.push(left * right);
+//				break;
+//			case '/':
+//				s.push(left / right);
+//				break;
+//			}
+//
+//		}
+//		else{
+//			s.push(stoi(cur));
+//		}
+//	}
+//	return s.top();
+//}
 
 
 
 int main(){
-	vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
-	findUnsortedSubarray(nums);
 
 
 
+	//vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
+	//findUnsortedSubarray(nums);
 	/*vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
 	compress(chars);*/
 	/*string str("A man, a plan, a canal: Panama");
