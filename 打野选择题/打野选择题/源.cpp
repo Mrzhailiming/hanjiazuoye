@@ -645,14 +645,70 @@ using namespace std;
 //	return len - cut;
 //}
 
+
+//day12/1
+//int findUnsortedSubarray(vector<int>& nums) {
+//	int len = nums.size();
+//	int begin = 0;
+//	int flag = 0;
+//	int end = len - 1;
+//	//需要排序区间的最大最小值
+//	int max = INT_MIN, min = INT_MAX;
+//	//排序的区间
+//	int pos1 = 0, pos2 = 0;
+//	while (begin < len - 1){
+//		//寻找需要排序区间的最大最小值
+//		//两个相邻的数是降序排列,就需要判断是不是最大或最小
+//		if (nums[begin] > nums[begin + 1]){
+//			if (max < nums[begin]){
+//				max = nums[begin];
+//			}
+//			if (min > nums[begin + 1]){
+//				min = nums[begin + 1];
+//			}
+//			flag = 1;
+//		}
+//		++begin;
+//	}
+//	//如果不需要排序
+//	if (flag == 0){
+//		return 0;
+//	}
+//	begin = 0;
+//	//寻找第一个大于 需要排序区间最小值 的位置
+//	while (begin < len){
+//		if (nums[begin] > min){
+//			pos1 = begin;
+//			break;
+//		}
+//		++begin;
+//	}
+//	//寻找第一个小于 需要排序区间最大值 的位置
+//	while (end >= 0){
+//		if (nums[end] < max){
+//			pos2 = end;
+//			break;
+//		}
+//		--end;
+//	}
+//	return pos2 - pos1 + 1;
+//}
+
+
+
+
+
+
+
+
 int main(){
-	vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
-	compress(chars);
+	vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
+	findUnsortedSubarray(nums);
 
 
 
-
-
+	/*vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
+	compress(chars);*/
 	/*string str("A man, a plan, a canal: Panama");
 	isPalindrome(str);*/
 	/*vector<int> nums = { 1, 4 };
