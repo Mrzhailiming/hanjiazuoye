@@ -127,3 +127,76 @@
 //	stack2.pop();
 //	return top;
 //}
+
+
+//int minNumberInRotateArray(vector<int> rotateArray) {
+//	int len = rotateArray.size();
+//	if (len == 0){
+//		return 0;
+//	}
+//	int i = 0;
+//	int min = rotateArray[i];
+//	for (i = 0; i < len; ++i){
+//		if (min > rotateArray[i]){
+//			min = rotateArray[i];
+//		}
+//	}
+//	return min;
+//}
+
+//ì³²¨ÄÇÆõ
+//int Fibonacci(int n) {
+//	int ret = 0;
+//	if (n == 1){
+//		return 1;
+//	}
+//	if (n == 2){
+//		return 1;
+//	}
+//	return ret = Fibonacci(n - 1) + Fibonacci(n - 2);
+//}
+//
+//int main(){
+//	int ret = Fibonacci(4);
+//	return 0;
+//}
+
+//ÇàÍÜÌøÌ¨½×
+//int jumpFloor(int number) {
+//	int a = 1;
+//	int b = 2;
+//	int ret = 0;
+//	int n = number;
+//	if (n == 1){
+//		return 1;
+//	}
+//	if (n == 2){
+//		return 2;
+//	}
+//	int i = 3;
+//	for (i = 3; i <= n; ++i){
+//		ret = a + b;
+//		a = b;
+//		b = ret;
+//	}
+//	return ret;
+//}
+
+int jumpFloorII(int number) {
+	if (number == 1){
+		return 1;
+	}
+	if (number == 2){
+		return 2;
+	}
+	int ret = 2;
+	for (int i = 3; i <= number; ++i){
+		ret = 2 * ret;
+	}
+	return ret;
+}
+
+int main(){
+	int ret = jumpFloorII(4);
+	return 0;
+}
