@@ -182,21 +182,71 @@
 //	return ret;
 //}
 
-int jumpFloorII(int number) {
-	if (number == 1){
-		return 1;
-	}
-	if (number == 2){
-		return 2;
-	}
-	int ret = 2;
-	for (int i = 3; i <= number; ++i){
-		ret = 2 * ret;
-	}
-	return ret;
-}
+//int jumpFloorII(int number) {
+//	if (number == 1){
+//		return 1;
+//	}
+//	if (number == 2){
+//		return 2;
+//	}
+//	int ret = 2;
+//	for (int i = 3; i <= number; ++i){
+//		ret = 2 * ret;
+//	}
+//	return ret;
+//}
+//
+//int main(){
+//	int ret = jumpFloorII(4);
+//	return 0;
+//}
 
-int main(){
-	int ret = jumpFloorII(4);
-	return 0;
-}
+//int  NumberOf1(int n) {
+//	int i = 0;
+//	int count = 0;
+//	size_t x = n;
+//	for (i = 0; i < 32; ++i){
+//		if ((1 & (x >> i)) == 1){
+//			++count;
+//		}
+//	}
+//	return count;
+//}
+//
+//int main(){
+//	int n = -1;
+//	size_t x = n;
+//	int ret = NumberOf1(x);
+//	
+//
+//	return 0;
+//}
+
+//
+//double Power(double base, int exponent) {
+//	if (base == 0.0){
+//		return 0.0;
+//	}
+//	if (exponent == 1){
+//		return base;
+//	}
+//	double ret = 1.0;
+//	int flag = 0;
+//	int e = exponent;
+//	if (e < 0){
+//		flag = 1;
+//		e = -e;
+//	}
+//	while (e){
+//		if (e & 1 == 1){
+//			ret *= base;
+//		}
+//		base *= base;
+//		e >>= 1;
+//	}
+//	return flag ? 1 / ret : ret;
+//}
+//int main(){
+//	double d = Power(2.0, 2);
+//	return 0;
+//}
