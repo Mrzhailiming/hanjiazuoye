@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
-
+using namespace std;
 //bool Find(int target, vector<vector<int> > array) {
 //	int len = array.size();
 //	int width = array[0].size();
@@ -250,3 +250,33 @@
 //	double d = Power(2.0, 2);
 //	return 0;
 //}
+
+#include <vector>
+void swap(int* a, int* b){
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+void reOrderArray(vector<int> &array) {
+	int begin = 0;
+	int end = array.size() - 1;
+	while (begin < end){
+		while (begin < end && array[begin] % 2 != 0){
+			++begin;
+		}
+		while (begin < end && array[end] % 2 == 0){
+			--end;
+		}
+		while (begin < end){
+			swap(&array[begin], &array[end]);
+			++begin;
+			--end;
+		}
+	}
+}
+
+int main(){
+	vector<int> a = { 1, 7, 6, 5, 4, 3, 2 };
+	reOrderArray(a);
+	return 0;
+}
