@@ -251,32 +251,193 @@ using namespace std;
 //	return 0;
 //}
 
-#include <vector>
-void swap(int* a, int* b){
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-void reOrderArray(vector<int> &array) {
-	int begin = 0;
-	int end = array.size() - 1;
-	while (begin < end){
-		while (begin < end && array[begin] % 2 != 0){
-			++begin;
-		}
-		while (begin < end && array[end] % 2 == 0){
-			--end;
-		}
-		while (begin < end){
-			swap(&array[begin], &array[end]);
-			++begin;
-			--end;
-		}
+//#include <vector>
+//void swap(int* a, int* b){
+//	int tmp = *a;
+//	*a = *b;
+//	*b = tmp;
+//}
+//void reOrderArray(vector<int> &array) {
+//	int begin = 0;
+//	int end = array.size() - 1;
+//	while (begin < end){
+//		while (begin < end && array[begin] % 2 != 0){
+//			++begin;
+//		}
+//		while (begin < end && array[end] % 2 == 0){
+//			--end;
+//		}
+//		while (begin < end){
+//			swap(&array[begin], &array[end]);
+//			++begin;
+//			--end;
+//		}
+//	}
+//}
+//
+//int main(){
+//	vector<int> a = { 1, 7, 6, 5, 4, 3, 2 };
+//	reOrderArray(a);
+//	return 0;
+//}
+
+//替换空格
+//void replaceSpace(char *str, int length) {
+//	char* tar = "%20";
+//	char ret[1024] = { 0 };
+//	int i = 0;
+//	while (i < length){
+//		if (str[i] == ' '){
+//			strcat(ret, tar);
+//		}
+//		else {
+//			char tmp[2] = { str[i], '\0' };
+//			strcat(ret, tmp);
+//		}
+//		++i;
+//	}
+//	str = new char[1024];
+//	strcpy(str, ret);
+//}
+//
+//int main(){
+//	char* str = "a a";
+//	replaceSpace(str, sizeof(str));
+//	return 0;
+//}
+
+//反转单链表
+//ListNode* ReverseList(ListNode* pHead) {
+//	ListNode* newHead, *newTail;
+//	ListNode* prev, *cur, *next;
+//	prev = NULL;
+//	cur = pHead;
+//	while (cur){
+//		next = cur->next;
+//		cur->next = prev;
+//		prev = cur;
+//		cur = next;
+//		if (next){
+//			next = next->next;
+//		}
+//	}
+//	return prev;
+//}
+
+//合并两个排序的链表
+//ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+//{
+//	ListNode* head1, *head2, *cur;
+//	ListNode* newHead = new struct ListNode(0);
+//	cur = newHead;
+//	head1 = pHead1;
+//	head2 = pHead2;
+//	while (head1 && head2){
+//		if (head1->val < head2->val){
+//			cur->next = head1;
+//			head1 = head1->next;
+//		}
+//		else{
+//			cur->next = head2;
+//			head2 = head2->next;
+//		}
+//		cur = cur->next;
+//	}
+//	while (head1){
+//		cur->next = head1;
+//		head1 = head1->next;
+//		cur = cur->next;
+//	}
+//	while (head2){
+//		cur->next = head2;
+//		head2 = head2->next;
+//		cur = cur->next;
+//	}
+//	return newHead->next;
+//}
+
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+		val(x), left(NULL), right(NULL) {
 	}
+};
+
+//TreeNode* FindHeadNode(TreeNode* pRoot1, TreeNode* pRoot2){
+//	if (pRoot1 == NULL){
+//		return NULL;
+//	}
+//	if (pRoot1->val == pRoot2->val){
+//		return pRoot1;
+//	}
+//	TreeNode* head1 = FindHeadNode(pRoot1->left, pRoot2);
+//	TreeNode* head2 = FindHeadNode(pRoot1->right, pRoot2);
+//	return head1 ? head1 : head2;
+//}
+//bool CmpNode(TreeNode* h1, TreeNode* h2){
+//	if (h2 == NULL){
+//		return true;
+//	}
+//	if (h1->val == h2->val){
+//		return CmpNode(h1->left, h2->left)
+//			&& CmpNode(h1->right, h2->right);
+//	}
+//	return false;
+//}
+//bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+//{
+//	if (pRoot2 == NULL){
+//		return false;
+//	}
+//	//找头
+//	TreeNode* head = FindHeadNode(pRoot1, pRoot2);
+//	if (head == NULL){
+//		return false;
+//	}
+//	else{
+//		//对比
+//		if (CmpNode(head, pRoot2)){
+//			return true;
+//		}
+//		else{
+//			return false;
+//		}
+//	}
+//}
+
+bool CmpNode(TreeNode* h1, TreeNode* h2){
+	//b遍历完了,
+	if (h2 == NULL){
+		return true;
+	}
+	//b还有, a遍历完了
+	if (h1 == NULL){
+		return false;
+	}
+	if (h1->val == h2->val){
+		return CmpNode(h1->left, h2->left)
+			&& CmpNode(h1->right, h2->right);
+	}
+	return false;
+}
+bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+{
+	if (pRoot2 == NULL || pRoot2 == NULL){
+		return false;
+	}
+	return CmpNode(pRoot1, pRoot2)
+		|| HasSubtree(pRoot1->left, pRoot2)
+		|| HasSubtree(pRoot1->right, pRoot2);
 }
 
 int main(){
-	vector<int> a = { 1, 7, 6, 5, 4, 3, 2 };
-	reOrderArray(a);
+	TreeNode* head = new TreeNode(1);
+	head->left = new TreeNode(2);
+	head->left->left = new TreeNode(4);
+	head->left->right = new TreeNode(5);
+	head->right = new TreeNode(3);
+	cout << HasSubtree(head, head->left) << endl;
 	return 0;
 }
