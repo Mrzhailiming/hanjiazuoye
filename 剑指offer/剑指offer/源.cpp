@@ -495,54 +495,116 @@ using namespace std;
 //	return ret;
 //}
 
-void pMatrix(vector<int>& ret, vector<vector<int>> matrix, int row, int col, int count){
-	int endRow = row - 1 - count;
-	int endCol = col - 1 - count;
-	//左 -> 右
-	int i = 0;
-	for (i = count; i <= endCol; ++i){
-		ret.push_back(matrix[count][i]);
-	}
-	//上 -> 下
-	if (count < endRow){
-		for (i = count + 1; i <= endRow; ++i){
-			ret.push_back(matrix[i][endCol]);
-		}
-	}
-	//左 -> 右
-	if (count < endRow && count < endCol){
-		for (i = endCol - 1; i >= count; --i){
-			ret.push_back(matrix[endRow][i]);
-		}
-	}
-	if (count < endRow - 1 && count < endCol){
-		for (i = endRow - 1; i > count; --i){
-			ret.push_back(matrix[i][count]);
-		}
-	}
-}
-vector<int> PrintMatrix(vector<vector<int>> matrix) {
-	vector<int> ret;
-	int row = matrix.size();
-	int col = matrix[0].size();
-	if (row == 0 && col == 0){
-		return ret;
-	}
-	//圈数
-	int count = 0;
-	while (row > 2 * count && col > 2 * count){
-		pMatrix(ret, matrix, row, col, count);
-		++count;
-	}
-	return ret;
-}
-int main(){
-	vector<int> a = { 1, 2, 3 };
-	vector<int> b = { 8, 9, 4 };
-	vector<int> c = { 7, 6, 5 };
-	vector<int> d;
-	//vector<vector<int> > matrix = { a, b, c };
-	vector<vector<int> > matrix = { d };
-	vector<int> ret = PrintMatrix(matrix);
-	return 0;
-}
+//顺时针打印数组
+//void pMatrix(vector<int>& ret, vector<vector<int>> matrix, int row, int col, int count){
+//	int endRow = row - 1 - count;
+//	int endCol = col - 1 - count;
+//	//左 -> 右
+//	int i = 0;
+//	for (i = count; i <= endCol; ++i){
+//		ret.push_back(matrix[count][i]);
+//	}
+//	//上 -> 下
+//	if (count < endRow){
+//		for (i = count + 1; i <= endRow; ++i){
+//			ret.push_back(matrix[i][endCol]);
+//		}
+//	}
+//	//左 -> 右
+//	if (count < endRow && count < endCol){
+//		for (i = endCol - 1; i >= count; --i){
+//			ret.push_back(matrix[endRow][i]);
+//		}
+//	}
+//	if (count < endRow - 1 && count < endCol){
+//		for (i = endRow - 1; i > count; --i){
+//			ret.push_back(matrix[i][count]);
+//		}
+//	}
+//}
+//vector<int> PrintMatrix(vector<vector<int>> matrix) {
+//	vector<int> ret;
+//	int row = matrix.size();
+//	int col = matrix[0].size();
+//	if (row == 0 && col == 0){
+//		return ret;
+//	}
+//	//圈数
+//	int count = 0;
+//	while (row > 2 * count && col > 2 * count){
+//		pMatrix(ret, matrix, row, col, count);
+//		++count;
+//	}
+//	return ret;
+//}
+//int main(){
+//	vector<int> a = { 1, 2, 3 };
+//	vector<int> b = { 8, 9, 4 };
+//	vector<int> c = { 7, 6, 5 };
+//	vector<int> d;
+//	//vector<vector<int> > matrix = { a, b, c };
+//	vector<vector<int> > matrix = { d };
+//	vector<int> ret = PrintMatrix(matrix);
+//	return 0;
+//}
+
+//包含min函数的栈
+//class Solution {
+//public:
+//	void push(int value) {
+//		if (s1.empty() == 1){
+//			s2.push(value);;
+//		}
+//		else{
+//			int t = s2.top();
+//			if (value < t){
+//				s2.push(value);
+//			}
+//		}
+//		s1.push(value);
+//	}
+//	void pop() {
+//		int t = s2.top();
+//		int p = s1.top();
+//		if (t == p){
+//			s2.pop();
+//		}
+//		s1.pop();
+//	}
+//	int top() {
+//		return s1.top();
+//	}
+//	int min() {
+//		return s2.top();
+//	}
+//	stack<int> s1;
+//	//存放最小值
+//	stack<int> s2;
+//};
+
+//栈的压入,弹出序列
+//bool IsPopOrder(vector<int> pushV, vector<int> popV) {
+//	int len = pushV.size();
+//	int i = 0;
+//	int j = 0;
+//	stack<int> s;
+//	while (i < len && j < len){
+//		//不相等
+//		if (pushV[i] != popV[j]){
+//			s.push(pushV[i]);
+//		}
+//		else{
+//			++j;
+//		}
+//		++i;
+//	}
+//	while (s.empty() != 1){
+//		int top = s.top();
+//		if (top != popV[j]){
+//			return false;
+//		}
+//		++j;
+//		s.pop();
+//	}
+//	return true;
+//}
