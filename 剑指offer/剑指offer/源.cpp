@@ -355,30 +355,26 @@ using namespace std;
 //	}
 //	return newHead->next;
 //}
+//
 
-struct TreeNode {
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x) :
-		val(x), left(NULL), right(NULL) {
-	}
-};
-
-//TreeNode* FindHeadNode(TreeNode* pRoot1, TreeNode* pRoot2){
-//	if (pRoot1 == NULL){
-//		return NULL;
+//判断一棵树是不是子树
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//		val(x), left(NULL), right(NULL) {
 //	}
-//	if (pRoot1->val == pRoot2->val){
-//		return pRoot1;
-//	}
-//	TreeNode* head1 = FindHeadNode(pRoot1->left, pRoot2);
-//	TreeNode* head2 = FindHeadNode(pRoot1->right, pRoot2);
-//	return head1 ? head1 : head2;
-//}
+//};
+//
 //bool CmpNode(TreeNode* h1, TreeNode* h2){
+//	//b遍历完了,
 //	if (h2 == NULL){
 //		return true;
+//	}
+//	//b还有, a遍历完了
+//	if (h1 == NULL){
+//		return false;
 //	}
 //	if (h1->val == h2->val){
 //		return CmpNode(h1->left, h2->left)
@@ -388,56 +384,69 @@ struct TreeNode {
 //}
 //bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
 //{
-//	if (pRoot2 == NULL){
+//	if (pRoot2 == NULL || pRoot2 == NULL){
 //		return false;
 //	}
-//	//找头
-//	TreeNode* head = FindHeadNode(pRoot1, pRoot2);
-//	if (head == NULL){
+//	return CmpNode(pRoot1, pRoot2)
+//		|| HasSubtree(pRoot1->left, pRoot2)
+//		|| HasSubtree(pRoot1->right, pRoot2);
+//}
+//
+//bool CmpNode(TreeNode* h1, TreeNode* h2){
+//	//b遍历完了,
+//	if (h2 == NULL){
+//		return true;
+//	}
+//	//b还有, a遍历完了
+//	if (h1 == NULL){
 //		return false;
 //	}
-//	else{
-//		//对比
-//		if (CmpNode(head, pRoot2)){
-//			return true;
+//	if (h1->val != h2->val){
+//		return false;
+//	}
+//	return CmpNode(h1->left, h2->left)
+//		&& CmpNode(h1->right, h2->right);
+//}
+//bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+//{
+//	bool ret = false;
+//	if (pRoot2 == NULL || pRoot2 == NULL){
+//		return false;
+//	}
+//	if (pRoot1 != NULL && pRoot2 != NULL){
+//		if (pRoot1->val == pRoot2->val){
+//			ret = CmpNode(pRoot1, pRoot2);
 //		}
-//		else{
-//			return false;
+//		if (ret == false){
+//			ret = HasSubtree(pRoot1->left, pRoot2);
+//		}
+//		if (ret == false){
+//			ret = HasSubtree(pRoot1->right, pRoot2);
 //		}
 //	}
+//	return ret;
+//	//return CmpNode(pRoot1, pRoot2)
+//	//    || HasSubtree(pRoot1->left, pRoot2)
+//	//    || HasSubtree(pRoot1->right, pRoot2);
+//}
+//int main(){
+//	TreeNode* head = new TreeNode(1);
+//	head->left = new TreeNode(2);
+//	head->left->left = new TreeNode(4);
+//	head->left->right = new TreeNode(5);
+//	head->right = new TreeNode(3);
+//	cout << HasSubtree(head, head->left) << endl;
+//	return 0;
 //}
 
-bool CmpNode(TreeNode* h1, TreeNode* h2){
-	//b遍历完了,
-	if (h2 == NULL){
-		return true;
-	}
-	//b还有, a遍历完了
-	if (h1 == NULL){
-		return false;
-	}
-	if (h1->val == h2->val){
-		return CmpNode(h1->left, h2->left)
-			&& CmpNode(h1->right, h2->right);
-	}
-	return false;
-}
-bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
-{
-	if (pRoot2 == NULL || pRoot2 == NULL){
-		return false;
-	}
-	return CmpNode(pRoot1, pRoot2)
-		|| HasSubtree(pRoot1->left, pRoot2)
-		|| HasSubtree(pRoot1->right, pRoot2);
-}
-
-int main(){
-	TreeNode* head = new TreeNode(1);
-	head->left = new TreeNode(2);
-	head->left->left = new TreeNode(4);
-	head->left->right = new TreeNode(5);
-	head->right = new TreeNode(3);
-	cout << HasSubtree(head, head->left) << endl;
-	return 0;
-}
+//镜像二叉树
+//void Mirror(TreeNode *pRoot) {
+//	if (pRoot == NULL || (pRoot->left == NULL && pRoot->right == NULL)){
+//		return;
+//	}
+//	TreeNode* tmp = pRoot->left;
+//	pRoot->left = pRoot->right;
+//	pRoot->right = tmp;
+//	Mirror(pRoot->left);
+//	Mirror(pRoot->right);
+//}
