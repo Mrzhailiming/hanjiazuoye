@@ -450,3 +450,99 @@ using namespace std;
 //	Mirror(pRoot->left);
 //	Mirror(pRoot->right);
 //}
+
+#include <vector>
+//void pMarix(vector<int> &ret, vector<vector<int> > matrix, int row, int col, int count){
+//	int endRow = row - 1 - count;
+//	int endCol = col - 1 - count;
+//	//左 -> 右
+//	int i = 0;
+//	for (i = count; i <= endCol; ++i){
+//		ret.push_back(matrix[count][i]);
+//	}
+//	//上 -> 下
+//	if (count < endRow){
+//		for (i = count + 1; i <= endRow; ++i){
+//			ret.push_back(matrix[i][endCol]);
+//		}
+//	}
+//	//右 -> 左
+//	if (count < endRow && count < endCol){
+//		for (i = endCol - 1; i > count; --i){
+//			ret.push_back(matrix[endRow][i]);
+//		}
+//	}
+//	//下 -> 上
+//	if (count < endRow - 1 && count < endCol){
+//		for (i = endRow - 1; i > count; --i){
+//			ret.push_back(matrix[i][count]);
+//		}
+//	}
+//}
+//
+//vector<int> PrintMatrix(vector<vector<int> > matrix) {
+//	vector<int> ret;
+//	if (matrix.size() == 0){
+//		return ret;
+//	}
+//	int row = matrix.size();
+//	int col = matrix[0].size();
+//	int count = 0;
+//	while (row > 2 * count && col > 2 * count){
+//		pMarix(ret, matrix, row, col, count);
+//		++count;
+//	}
+//	return ret;
+//}
+
+void pMatrix(vector<int>& ret, vector<vector<int>> matrix, int row, int col, int count){
+	int endRow = row - 1 - count;
+	int endCol = col - 1 - count;
+	//左 -> 右
+	int i = 0;
+	for (i = count; i <= endCol; ++i){
+		ret.push_back(matrix[count][i]);
+	}
+	//上 -> 下
+	if (count < endRow){
+		for (i = count + 1; i <= endRow; ++i){
+			ret.push_back(matrix[i][endCol]);
+		}
+	}
+	//左 -> 右
+	if (count < endRow && count < endCol){
+		for (i = endCol - 1; i >= count; --i){
+			ret.push_back(matrix[endRow][i]);
+		}
+	}
+	if (count < endRow - 1 && count < endCol){
+		for (i = endRow - 1; i > count; --i){
+			ret.push_back(matrix[i][count]);
+		}
+	}
+}
+vector<int> PrintMatrix(vector<vector<int>> matrix) {
+	vector<int> ret;
+	int row = matrix.size();
+	int col = matrix[0].size();
+	if (row == 0 && col == 0){
+		return ret;
+	}
+	//圈数
+	int count = 0;
+	while (row > 2 * count && col > 2 * count){
+		pMatrix(ret, matrix, row, col, count);
+		++count;
+	}
+	return ret;
+}
+int main(){
+	vector<int> a = { 1, 2, 3 };
+	vector<int> b = { 8, 9, 4 };
+	vector<int> c = { 7, 6, 5 };
+	vector<int> d;
+	//vector<vector<int> > matrix = { a, b, c };
+	vector<vector<int> > matrix = { d };
+	vector<int> ret = PrintMatrix(matrix);
+	return 0;
+}
