@@ -608,3 +608,102 @@ using namespace std;
 //	}
 //	return true;
 //}
+
+
+//二叉树的层序遍历
+//vector<int> PrintFromTopToBottom(TreeNode* root) {
+//	queue<TreeNode*> q;
+//	vector<int> ret;
+//	TreeNode* cur;
+//	if (root == NULL){
+//		return ret;
+//	}
+//	q.push(root);
+//	//ret.push_back(root->val);
+//	while (q.empty() != 1){
+//		int count = q.size();
+//		int i = 0;
+//		for (i = 0; i < count; ++i){
+//			cur = q.front();
+//			q.pop();
+//			ret.push_back(cur->val);
+//			if (cur->left){
+//				q.push(cur->left);
+//			}
+//			if (cur->right){
+//				q.push(cur->right);
+//			}
+//		}
+//	}
+//	return ret;
+//}
+
+
+
+//bool vsBst(vector<int> s, int begin, int end){
+//	int root = s[end];
+//	int i = begin;
+//	//寻找左子树的边界
+//	for (i = begin; i < end; ++i){
+//		if (s[i] > root){
+//			break;
+//		}
+//	}
+//	int j = i;
+//	for (; j < end; ++j){
+//		if (s[j] < root){
+//			return false;
+//		}
+//	}
+//	bool left = true;
+//	if (i > begin){
+//		left = vsBst(s, begin, i - 1);
+//	}
+//	bool right = true;
+//	if (i < end){
+//		right = vsBst(s, i, end - 1);
+//	}
+//	return left && right;
+//}
+//
+//bool VerifySquenceOfBST(vector<int> sequence) {
+//	int len = sequence.size();
+//	if (vsBst(sequence, 0, len - 1)){
+//		return true;
+//	}
+//	else{
+//		return false;
+//	}
+//}
+
+bool vsBst(vector<int> s, int begin, int end){
+	if (begin >= end){
+		return true;
+	}
+	int i = begin;
+	int root = s[end];
+	for (; i < end; ++i){
+		if (s[i] > root){
+			return false;;
+		}
+	}
+	return vsBst(s, begin, i - 1)
+		&& vsBst(s, i, end - 1);
+}
+
+bool VerifySquenceOfBST(vector<int> sequence) {
+	int len = sequence.size();
+	if (vsBst(sequence, 0, len - 1)){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+int main(){
+	vector<int> s = { 2, 4, 3};
+	if (VerifySquenceOfBST(s)){
+		cout << "yes" << endl;
+	}
+	return 0;
+}
