@@ -851,3 +851,60 @@ using namespace std;
 //	}
 //	return newHead;
 //}
+
+//二叉搜索树与双向链表
+//void _Convert(TreeNode* root, TreeNode** prev){
+//	if (!root){
+//		return;
+//	}
+//	_Convert(root->left, prev);
+//	root->left = *prev;
+//	if (*prev){
+//		(*prev)->right = root;
+//	}
+//	*prev = root;
+//	_Convert(root->right, prev);
+//}
+//TreeNode* Convert(TreeNode* pRootOfTree)
+//{
+//	TreeNode* prev = NULL;
+//	TreeNode* head;
+//	_Convert(pRootOfTree, &prev);
+//	head = pRootOfTree;
+//	while (head && head->left){
+//
+//		head = head->left;
+//	}
+//	return head;
+//}
+////
+////
+//void _convert(TreeNode* root, TreeNode** pPrev){
+//	//中序遍历
+//	if (root->left){
+//		_convert(root->left, pPrev);
+//	}
+//	//在此建立新的连接
+//	root->left = *pPrev;
+//	if (*pPrev != NULL){
+//		(*pPrev)->right = root;
+//	}
+//	*pPrev = root;
+//	if (root->right){
+//		_convert(root->right, pPrev);
+//	}
+//}
+//TreeNode* Convert(TreeNode* pRootOfTree)
+//{
+//	if (pRootOfTree == NULL){
+//		return NULL;
+//	}
+//	TreeNode* prev = NULL;
+//	_convert(pRootOfTree, &prev);
+//	prev = pRootOfTree;
+//	//从根找到最左的节点
+//	while (prev && prev->left){
+//		prev = prev->left;
+//	}
+//	return prev;
+//}
