@@ -713,51 +713,141 @@ using namespace std;
 
 
 //二叉树中和为某一值的路径
-struct TreeNode {
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x) :
-		val(x), left(NULL), right(NULL) {
-	}
-};
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//		val(x), left(NULL), right(NULL) {
+//	}
+//};
+//
+//void findp(TreeNode* root, vector<vector<int>>& ret, int cur, int tar){
+//	static vector<int> v;
+//	static int count = 0;
+//	cur += root->val;
+//	v.push_back(root->val);
+//	//是叶子节点, 且和相等
+//	if (cur == tar && root->left == NULL && root->right == NULL){
+//		ret.push_back(v);
+//		++count;
+//	}
+//	if (root->left){
+//		findp(root->left, ret, cur, tar);
+//	}
+//	if (root->right){
+//		findp(root->right, ret, cur, tar);
+//	}
+//	cur -= root->val;
+//	v.pop_back();
+//}
+//
+//vector<vector<int> > FindPath(TreeNode* root, int expectNumber) {
+//	vector<vector<int>> ret;
+//	if (root == NULL){
+//		return ret;
+//	}
+//	findp(root, ret, 0, expectNumber);
+//	return ret;
+//}
+//int main(){
+//	TreeNode* root = new TreeNode(1);
+//	root->left = new TreeNode(2);
+//	root->right = new TreeNode(3);
+//	root->left->left = new TreeNode(1);
+//
+//	FindPath(root, 4);
+//	return 0;
+//}
 
 
+//struct RandomListNode {
+//	int label;
+//	struct RandomListNode *next, *random;
+//	RandomListNode(int x) :
+//		label(x), next(NULL), random(NULL) {
+//	}
+//};
+//
+//RandomListNode* Clone(RandomListNode* pHead)
+//{
+//	RandomListNode* head = pHead;
+//	while (head){
+//		RandomListNode* next = head->next;
+//		RandomListNode* newNode = new RandomListNode(head->label);
+//		//将newNode插入到head前面
+//		head->next = newNode;
+//		newNode->next = next;
+//		//random不要连接
+//		//newNode->random = head->random;
+//		head = next;
+//	}
+//	RandomListNode* cur = pHead;
+//	//连接random
+//	while (cur && cur->next){
+//		cur->next->random = cur->random ? cur->random->next : NULL;
+//		cur = cur->next->next;
+//	}
+//	head = pHead->next;
+//	while (head){
+//		head->next = head->next ? head->next->next : NULL;
+//		head = head->next;
+//	}
+//	return pHead->next;
+//}
+//
+//int main(){
+//	RandomListNode* root = new RandomListNode(1);
+//	
+//	root->next = new struct RandomListNode(2);
+//	
+//	root->next->next = new struct RandomListNode(3);
+//	
+//	root->next->next->next = new struct RandomListNode(4);
+//
+//	root->next->next->next->next = new struct RandomListNode(5);
+//
+//	root->random = root->next->next;
+//	root->next->random = root->next->next->next->next;
+//	root->next->next->random = NULL;
+//	root->next->next->next->random = root->next;
+//	root->next->next->next->next->random = NULL;
+//	RandomListNode* ret = Clone(root);
+//	return 0;
+//}
 
-void findp(TreeNode* root, vector<vector<int>>& ret, int cur, int tar){
-	static vector<int> v;
-	static int count = 0;
-	cur += root->val;
-	v.push_back(root->val);
-	//是叶子节点, 且和相等
-	if (cur == tar && root->left == NULL && root->right == NULL){
-		ret.push_back(v);
-		++count;
-	}
-	if (root->left){
-		findp(root->left, ret, cur, tar);
-	}
-	if (root->right){
-		findp(root->right, ret, cur, tar);
-	}
-	cur -= root->val;
-	v.pop_back();
-}
-
-vector<vector<int> > FindPath(TreeNode* root, int expectNumber) {
-	vector<vector<int>> ret;
-	if (root == NULL){
-		return ret;
-	}
-	findp(root, ret, 0, expectNumber);
-	return ret;
-}
-int main(){
-	TreeNode* root = new TreeNode(1);
-	root->left = new TreeNode(2);
-	root->right = new TreeNode(3);
-	root->left->left = new TreeNode(1);
-
-	FindPath(root, 4);
-	return 0;
-}
+//复杂链表的复制
+//RandomListNode* Clone(RandomListNode* pHead)
+//{
+//	if (pHead == NULL){
+//		return NULL;
+//	}
+//	RandomListNode* cur = pHead;
+//	RandomListNode* next;
+//	while (cur){
+//		//保存下一个节点
+//		next = cur->next;
+//		RandomListNode* newNode = new RandomListNode(cur->label);
+//		//拼接
+//		cur->next = newNode;
+//		newNode->next = next;
+//		cur = next;
+//	}
+//	//复制random
+//	cur = pHead;
+//	while (cur){
+//		cur->next->random = cur->random ? cur->random->next : NULL;
+//		cur = cur->next->next;
+//	}
+//	//分开
+//	cur = pHead;
+//	RandomListNode* newHead = cur->next;
+//	RandomListNode* newCur = newHead;
+//	while (cur){
+//		cur->next = cur->next->next;
+//		newCur->next = newCur->next ? newCur->next->next : NULL;
+//		cur = cur->next;
+//		newCur = newCur->next;
+//	}
+//	return newHead;
+//}
