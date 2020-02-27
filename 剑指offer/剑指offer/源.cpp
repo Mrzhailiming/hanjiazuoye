@@ -676,34 +676,88 @@ using namespace std;
 //	}
 //}
 
-bool vsBst(vector<int> s, int begin, int end){
-	if (begin >= end){
-		return true;
+
+
+//bool vsBst(vector<int> s, int begin, int end){
+//	if (begin >= end){
+//		return true;
+//	}
+//	int i = begin;
+//	int root = s[end];
+//	for (; i < end; ++i){
+//		if (s[i] > root){
+//			return false;;
+//		}
+//	}
+//	return vsBst(s, begin, i - 1)
+//		&& vsBst(s, i, end - 1);
+//}
+//
+//bool VerifySquenceOfBST(vector<int> sequence) {
+//	int len = sequence.size();
+//	if (vsBst(sequence, 0, len - 1)){
+//		return true;
+//	}
+//	else{
+//		return false;
+//	}
+//}
+//int main(){
+//	vector<int> s = { 2, 4, 3};
+//	if (VerifySquenceOfBST(s)){
+//		cout << "yes" << endl;
+//	}
+//	return 0;
+//}
+
+
+
+//二叉树中和为某一值的路径
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+		val(x), left(NULL), right(NULL) {
 	}
-	int i = begin;
-	int root = s[end];
-	for (; i < end; ++i){
-		if (s[i] > root){
-			return false;;
-		}
+};
+
+
+
+void findp(TreeNode* root, vector<vector<int>>& ret, int cur, int tar){
+	static vector<int> v;
+	static int count = 0;
+	cur += root->val;
+	v.push_back(root->val);
+	//是叶子节点, 且和相等
+	if (cur == tar && root->left == NULL && root->right == NULL){
+		ret.push_back(v);
+		++count;
 	}
-	return vsBst(s, begin, i - 1)
-		&& vsBst(s, i, end - 1);
+	if (root->left){
+		findp(root->left, ret, cur, tar);
+	}
+	if (root->right){
+		findp(root->right, ret, cur, tar);
+	}
+	cur -= root->val;
+	v.pop_back();
 }
 
-bool VerifySquenceOfBST(vector<int> sequence) {
-	int len = sequence.size();
-	if (vsBst(sequence, 0, len - 1)){
-		return true;
+vector<vector<int> > FindPath(TreeNode* root, int expectNumber) {
+	vector<vector<int>> ret;
+	if (root == NULL){
+		return ret;
 	}
-	else{
-		return false;
-	}
+	findp(root, ret, 0, expectNumber);
+	return ret;
 }
 int main(){
-	vector<int> s = { 2, 4, 3};
-	if (VerifySquenceOfBST(s)){
-		cout << "yes" << endl;
-	}
+	TreeNode* root = new TreeNode(1);
+	root->left = new TreeNode(2);
+	root->right = new TreeNode(3);
+	root->left->left = new TreeNode(1);
+
+	FindPath(root, 4);
 	return 0;
 }
