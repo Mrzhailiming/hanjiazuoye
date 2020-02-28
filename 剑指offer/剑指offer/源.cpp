@@ -908,3 +908,155 @@ using namespace std;
 //	}
 //	return prev;
 //}
+
+//二叉树中和为某一值的路径
+//void findp(TreeNode* root, int tar, vector<vector<int>>& ret, int cur){
+//	static vector<int> v;
+//	//累加
+//	cur += root->val;
+//	//push
+//	v.push_back(root->val);
+//
+//	if (root->left){
+//		findp(root->left, tar, ret, cur);
+//	}
+//	if (root->right){
+//		findp(root->right, tar, ret, cur);
+//	}
+//	//判断是不是叶子节点且和相等
+//	if (cur == tar && root->left == NULL && root->right == NULL){
+//		ret.push_back(v);
+//	}
+//	cur -= root->val;
+//	v.pop_back();
+//}
+//vector<vector<int> > FindPath(TreeNode* root, int expectNumber) {
+//	vector<vector<int>> ret;
+//	if (root == NULL){
+//		return ret;
+//	}
+//	findp(root, expectNumber, ret, 0);
+//	return ret;
+//}
+
+//复杂链表的复制
+//RandomListNode* Clone(RandomListNode* pHead)
+//{
+//	if (pHead == NULL){
+//		return NULL;
+//	}
+//	RandomListNode* cur = pHead;
+//	RandomListNode* next;
+//	while (cur){
+//		//保存下一个节点
+//		next = cur->next;
+//		RandomListNode* newNode = new RandomListNode(cur->label);
+//		//拼接
+//		cur->next = newNode;
+//		newNode->next = next;
+//		cur = next;
+//	}
+//	//复制random
+//	cur = pHead;
+//	while (cur){
+//		cur->next->random = cur->random ? cur->random->next : NULL;
+//		cur = cur->next->next;
+//	}
+//	//分开
+//	cur = pHead;
+//	RandomListNode* newHead = cur->next;
+//	RandomListNode* newCur = newHead;
+//	while (cur){
+//		cur->next = cur->next->next;
+//		newCur->next = newCur->next ? newCur->next->next : NULL;
+//		cur = cur->next;
+//		newCur = newCur->next;
+//	}
+//	return newHead;
+//}
+//
+
+//二叉搜索树与双向链表
+//void _convert(TreeNode* root, TreeNode*& pPrev){
+//	//中序遍历
+//	if (root->left){
+//		_convert(root->left, pPrev);
+//	}
+//	//在此建立新的连接
+//	root->left = pPrev;
+//	if (pPrev != NULL){
+//		pPrev->right = root;
+//	}
+//	pPrev = root;
+//	if (root->right){
+//		_convert(root->right, pPrev);
+//	}
+//}
+//TreeNode* Convert(TreeNode* pRootOfTree)
+//{
+//	if (pRootOfTree == NULL){
+//		return NULL;
+//	}
+//	TreeNode* prev = NULL;
+//	_convert(pRootOfTree, prev);
+//	prev = pRootOfTree;
+//	//从根找到最左的节点
+//	while (prev && prev->left){
+//		prev = prev->left;
+//	}
+//	return prev;
+//}
+
+//字符串的排列
+//void _per(set<string>& set, string s, int begin, int len){
+//	if (s[begin] == '\0'){
+//		set.insert(s);
+//	}
+//	else{
+//		int i = begin;
+//		for (; i < len; ++i){
+//			//将begin依次和后面的元素交换
+//			char tmp = s[i];
+//			s[i] = s[begin];
+//			s[begin] = tmp;
+//			_per(set, s, begin + 1, len);
+//			//换回来
+//			tmp = s[i];
+//			s[i] = s[begin];
+//			s[begin] = tmp;
+//		}
+//	}
+//}
+//vector<string> Permutation(string str) {
+//	vector<string> ret;
+//	set<string> set;
+//	int len = str.size();
+//	if (len == 0){
+//		return ret;
+//	}
+//	_per(set, str, 0, len);
+//	for (const auto& e : set){
+//		ret.push_back(e);
+//	}
+//	return ret;
+//}
+
+//数组中出现次数超过一半的数字
+//int MoreThanHalfNum_Solution(vector<int> numbers) {
+//	map<int, int> m;
+//	int count = 0;
+//	int max = 0;
+//	for (const auto& e : numbers){
+//		++m[e];
+//		if (m[e] > count){
+//			max = e;
+//			count = m[e];
+//		}
+//	}
+//	if (2 * m[max] > numbers.size()){
+//		return max;
+//	}
+//	else{
+//		return 0;
+//	}
+//}
