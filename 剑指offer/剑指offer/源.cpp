@@ -1060,3 +1060,19 @@ using namespace std;
 //		return 0;
 //	}
 //}
+
+
+//连续子数组的最大和
+//int FindGreatestSumOfSubArray(vector<int> array) {
+//	int len = array.size();
+//	if (len == 0){
+//		return -1;
+//	}
+//	int sum = array[0];
+//	int max = array[0];
+//	for (int i = 1; i < len; ++i){
+//		sum = sum > 0 ? sum + array[i] : array[i];
+//		max = sum > max ? sum : max;
+//	}
+//	return max;
+//}
