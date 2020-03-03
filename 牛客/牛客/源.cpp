@@ -1,4 +1,8 @@
-#include <iostream> 
+
+#include <stdio.h>
+#include <iostream>
+#include <map>
+
 using namespace std;
 //int a[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 //void fun(int *pa, int n);
@@ -29,3 +33,34 @@ using namespace std;
 //		return *it;
 //	}
 //};
+
+#include <string>
+
+
+int main(){
+	string s;
+	while (getline(cin, s)){
+		s += '\0';
+		int len = s.size();
+		int i = 0;
+		string tmp;
+		map<string, int> mp;
+		for (; i <= len; ++i){
+			if (s[i] == ' ' || s[i] == '.'
+				|| s[i] == '(' || s[i] == ','
+				|| s[i] == '\0'){
+				if (tmp != "")
+					++mp[tmp];
+				tmp = "";
+			}
+			else{
+				tmp += tolower(s[i]);
+			}
+		}
+		for (const auto& e : mp){
+			cout << e.first << ":" << e.second << endl;
+		}
+	}
+	
+	return 0;
+}
