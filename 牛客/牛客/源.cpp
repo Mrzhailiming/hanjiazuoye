@@ -81,31 +81,38 @@ using namespace std;
 //	return 0;
 //}
 
+//
+////二叉树的公共祖先 lc236
+//bool _low(TreeNode* root, TreeNode* tar){
+//	if (root == NULL){
+//		return false;
+//	}
+//	if (root->val == tar->val){
+//		return true;
+//	}
+//	return _low(root->left, tar)
+//		|| _low(root->right, tar);
+//}
+//TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//	//根与其中一个相符合
+//	if (root->val == p->val || root->val == q->val){
+//		return root;
+//	}
+//	//存在于一边
+//	//p和q存在左边
+//	if (_low(root->left, p) && _low(root->left, q)){
+//		return lowestCommonAncestor(root->left, p, q);
+//	}
+//	//p和q存在右边
+//	else if (_low(root->right, p) && _low(root->right, q)){
+//		return lowestCommonAncestor(root->right, p, q);
+//	}
+//	return root;
+//}
 
-//二叉树的公共祖先 lc236
-bool _low(TreeNode* root, TreeNode* tar){
-	if (root == NULL){
-		return false;
-	}
-	if (root->val == tar->val){
-		return true;
-	}
-	return _low(root->left, tar)
-		|| _low(root->right, tar);
-}
-TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-	//根与其中一个相符合
-	if (root->val == p->val || root->val == q->val){
-		return root;
-	}
-	//存在于一边
-	//p和q存在左边
-	if (_low(root->left, p) && _low(root->left, q)){
-		return lowestCommonAncestor(root->left, p, q);
-	}
-	//p和q存在右边
-	else if (_low(root->right, p) && _low(root->right, q)){
-		return lowestCommonAncestor(root->right, p, q);
-	}
-	return root;
-}
+//int main(){
+//	string ret;
+//	char* des = new char();
+//	ret += itoa(-1, des, 1);
+//	return 0;
+//}
