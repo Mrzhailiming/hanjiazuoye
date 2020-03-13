@@ -116,3 +116,99 @@ using namespace std;
 //	ret += itoa(-1, des, 1);
 //	return 0;
 //}
+
+//class out{
+//public:
+//	static int a;
+//	class in{
+//	public:
+//		void fun(){
+//			cout << a << endl;
+//		}
+//	};
+//};
+//
+//int out::a = 10;
+//
+//int main(){
+//	out::in a;
+//	a.fun();
+//	return 0;
+//}
+
+
+
+//int main(){
+//	int* p = (int*)malloc(4);
+//	int* p2 = (int*)realloc(p, 1024);
+//
+//	return 0;
+//}
+
+
+//int main(){
+//	string s("sadsadasd");
+//	s.reserve(2);
+//	s.reserve(100);
+//	return 0;
+//}
+//
+//int* g = nullptr;
+//
+//
+//void test(){
+//	int c = 10;
+//	int* a = &c;
+//	swap(g, a);
+//}
+//
+//int main(){
+//	test();
+//	return 0;
+//}
+//
+
+//class A{
+//public:
+//	static void fun(A a){
+//		a._a;
+//	}
+//	void afun(){
+//
+//	}
+//	int _a;
+//};
+
+class Solution {
+public:
+	string multiply(string num1, string num2) {
+		if (num1 == "0" || num2 == "0"){
+			return "0";
+		}
+		int len1 = num1.size();
+		int len2 = num2.size();
+		int arr[len1 + len2] = { 0 };
+		int i = 0;
+		for (; i < len1; ++i){
+			int j = 0;
+			for (; j < len2; ++j){
+				//i + j 要加一, 不然arr最后一个元素没有访问到,第一个元素会被占有, 但有可能会进位, 所以要加 1
+				arr[i + j + 1] += (num1[i] - '0') * (num2[j] - '0');
+			}
+		}
+		i = len1 + len2 - 1;
+		for (; i > 0; --i){
+			if (arr[i] > 9){
+				arr[i - 1] += (arr[i] / 10);
+				arr[i] = arr[i] % 10;
+			}
+		}
+		string ret;
+		//两个数相乘, 最大长度为两个数的长度和
+		i = arr[0] ? 0 : 1;
+		for (; i < len1 + len2; ++i){
+			ret += (arr[i] + '0');
+		}
+		return ret;
+	}
+};
