@@ -178,37 +178,67 @@ using namespace std;
 //	}
 //	int _a;
 //};
+//
+//#include <string>
+//#include <iostream>
+//#include <unordered_map>
+//using namespace std;
+//
+//void fun(string& str){
+//	unordered_map<char, int> mp;
+//	for (const auto e : str){
+//		++mp[e];
+//	}
+//	for (const auto e : mp){
+//		if (e.second == 1){
+//			cout << e.first << endl;
+//		}
+//	}
+//	cout << -1 << endl;
+//}
+//
+//
+//int main(){
+//	string str;
+//	while (cin >> str){
+//		fun(str);
+//	}
+//	return 0;
+//}
 
-class Solution {
-public:
-	string multiply(string num1, string num2) {
-		if (num1 == "0" || num2 == "0"){
-			return "0";
-		}
-		int len1 = num1.size();
-		int len2 = num2.size();
-		int arr[len1 + len2] = { 0 };
-		int i = 0;
-		for (; i < len1; ++i){
-			int j = 0;
-			for (; j < len2; ++j){
-				//i + j 要加一, 不然arr最后一个元素没有访问到,第一个元素会被占有, 但有可能会进位, 所以要加 1
-				arr[i + j + 1] += (num1[i] - '0') * (num2[j] - '0');
-			}
-		}
-		i = len1 + len2 - 1;
-		for (; i > 0; --i){
-			if (arr[i] > 9){
-				arr[i - 1] += (arr[i] / 10);
-				arr[i] = arr[i] % 10;
-			}
-		}
-		string ret;
-		//两个数相乘, 最大长度为两个数的长度和
-		i = arr[0] ? 0 : 1;
-		for (; i < len1 + len2; ++i){
-			ret += (arr[i] + '0');
-		}
-		return ret;
+//#include <vector>
+//int main(){
+//	vector<int> v(11, 1);
+//	v.reserve(15);
+//	return 0;
+//}
+
+
+//lc 17
+#include <vector>
+#include <map>
+vector<string> mp = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+void _letter(vector<string>& ret, string digits, int count, string tmp){
+	if (count == digits.size()){
+		ret.push_back(tmp);
+		return;
 	}
-};
+	//获取字符串
+	string str = mp[digits[count] - '0'];
+	int len = str.size();
+	for (int i = 0; i < len; ++i){
+		_letter(ret, digits, count + 1, tmp + str[i]);
+	}
+}
+vector<string> letterCombinations(string digits) {
+	vector<string> ret;
+	string tmp;
+	_letter(ret, digits, 0, tmp);
+	return ret;
+}
+
+int main(){
+	string s("23");
+	letterCombinations(s);
+	return 0;
+}
