@@ -214,31 +214,179 @@ using namespace std;
 //}
 
 
-//lc 17
-#include <vector>
-#include <map>
-vector<string> mp = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-void _letter(vector<string>& ret, string digits, int count, string tmp){
-	if (count == digits.size()){
-		ret.push_back(tmp);
-		return;
-	}
-	//获取字符串
-	string str = mp[digits[count] - '0'];
-	int len = str.size();
-	for (int i = 0; i < len; ++i){
-		_letter(ret, digits, count + 1, tmp + str[i]);
-	}
-}
-vector<string> letterCombinations(string digits) {
-	vector<string> ret;
-	string tmp;
-	_letter(ret, digits, 0, tmp);
-	return ret;
-}
+////lc 17
+//#include <vector>
+//#include <map>
+//vector<string> mp = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+//void _letter(vector<string>& ret, string digits, int count, string tmp){
+//	if (count == digits.size()){
+//		ret.push_back(tmp);
+//		return;
+//	}
+//	//获取字符串
+//	string str = mp[digits[count] - '0'];
+//	int len = str.size();
+//	for (int i = 0; i < len; ++i){
+//		_letter(ret, digits, count + 1, tmp + str[i]);
+//	}
+//}
+//vector<string> letterCombinations(string digits) {
+//	vector<string> ret;
+//	string tmp;
+//	_letter(ret, digits, 0, tmp);
+//	return ret;
+//}
+//
+//int main(){
+//	string s("23");
+//	letterCombinations(s);
+//	return 0;
+//}
+
+//int main(){
+//	int len = sizeof(int);
+//	len = sizeof(long);
+//	return 0;
+//}
+
+////类型萃取
+//class trueClass{
+//public:
+//	static bool get(){
+//		return true;
+//	}
+//};
+//
+//class falseClass{
+//public:
+//	static bool get(){
+//		return false;
+//	}
+//};
+//
+//template <class T>
+//class Cuiqu{
+//public:
+//	typedef trueClass type;
+//};
+//
+////特化
+//template <>
+//class Cuiqu<int>{
+//public:
+//	typedef falseClass type;
+//};
+//
+//int main(){
+//	bool ret = Cuiqu<int>::type::get();
+//	ret = Cuiqu<char>::type::get();
+//	return 0;
+//}
+
+
+
+//
+//class Base2 {
+//public:
+//	int _b2;
+//};
+//class Base1 {
+//public:
+//	int _b1;
+//};
+//class Derive : public Base2,public Base1{
+//public:
+//	int _d;
+//};
+//int main(){
+//	// A. p1 == p2 == p3
+//	// B. p1 < p2 < p3
+//	// C. p1 == p3 != p2
+//	// D. p1 != p2 != p3
+//	Derive d;
+//	Base1* p1 = &d;
+//	Base2* p2 = &d;
+//	Derive* p3 = &d;
+//	return 0;
+//}
+
+//
+//void fun(int){
+//
+//}
+//void fun(int){
+//
+//}
+//
+//int main(){
+//	fun(1);
+//	return 0;
+//}
+
+//
+//class Base
+//{
+//public:
+//	virtual void Func1()
+//	{
+//		cout << "Func1()" << endl;
+//	}
+//private:
+//	int _b = 1;
+//};
+
+//class Base
+//{
+//public:
+//	void Func1()
+//	{
+//		cout << "Base::Func1()" << endl;
+//	}
+//	virtual void Func2()
+//	{
+//cout << "Base::Func2()" << endl;
+//}
+//void Func3()
+//{
+//	cout << "Base::Func3()" << endl;
+//}
+//private:
+//	int _b = 1;
+//};
+//class Derive : public Base
+//{
+//public:
+//	virtual void Func1()
+//	{
+//		cout << "Derive::Func1()" << endl;
+//	}
+//	virtual void fund(){
+//		;
+//	}
+//private:
+//	int _d = 2;
+//};
+//
+//class th : public Derive{
+//public:
+//	virtual void funth(){
+//		;
+//	}
+//};
+//
+//int main(){
+//	Derive d;
+//	th t;
+//	int a = sizeof(Derive);
+//	return 0;
+//}
+
+
 
 int main(){
-	string s("23");
-	letterCombinations(s);
-	return 0;
+	char str1[100] = "acc";
+	char str2[sizeof(str1)];
+	return 0; 
 }
+
+
