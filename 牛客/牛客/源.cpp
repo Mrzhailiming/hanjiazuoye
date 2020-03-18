@@ -383,10 +383,129 @@ using namespace std;
 
 
 
-int main(){
-	char str1[100] = "acc";
-	char str2[sizeof(str1)];
-	return 0; 
-}
+//int main(){
+//	char str1[100] = "acc";
+//	char str2[sizeof(str1)];
+//	return 0; 
+//}
+//
 
+//#include <vector>
+//
+//
+// struct TreeNode {
+//    int val;
+//     TreeNode *left;
+//     TreeNode *right;
+//     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+// };
+//
+//TreeNode* _build(vector<int>& preorder, vector<int>& inorder, int begin, int end){
+//	static int intdex = 0;
+//	if (begin > end){
+//		return NULL;
+//	}
+//	TreeNode* root = new TreeNode(preorder[intdex]);
+//	int i = begin;
+//	for (; i <= end; ++i){
+//		if (preorder[intdex] == inorder[i]){
+//			break;
+//		}
+//	}
+//	++intdex;
+//	root->left = _build(preorder, inorder, begin, i - 1);
+//	root->right = _build(preorder, inorder, i + 1, end);
+//	return root;
+//}
+//TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+//	TreeNode* root = _build(preorder, inorder, 0, preorder.size() - 1);
+//	return root;
+//}
+//
+//int main(){
+//	vector<int> v(10);
+//	vector<int> v2 = { -1 };
+//	buildTree(v, v2);
+//	return 0;
+//}
 
+//#include <vector>
+//int main(){
+//	int i = 0;
+//	for (; i < 10; ++i){
+//		int j = 0;
+//		for (; j < 10; ++j){
+//			if (j == 2){
+//				break;
+//			}
+//		}
+//		cout << i << endl;
+//	}
+//	vector<vector<int>> mp(10);
+//	return 0;
+//}
+
+#include <vector>
+class Solution {
+public:
+	int simple = 0;
+	void _exist(vector<vector<char>>& board, string word, int i, int j, int index){
+		static int maxRow = board.size();
+		static int maxCol = board[0].size();
+		static vector<vector<int>> map[maxRow][maxCol] = { 0 };
+		if (index == word.size){
+			simple = 1;
+			return;
+		}
+		if (map[i][j] == 0 && board[i][j] == word[index]){
+			map[i][j] = 1;
+		}
+		if (map[i - 1][j] == 0 && board[i - 1][j] == word[index]){
+			map[i - 1][j] = 1;
+			i = i - 1;
+		}
+		if (map[i][j + 1] == 0 && board[i][j + 1] == word[index]){
+			map[i][j + 1] = 1;
+			j = j + 1;
+		}
+		if (map[i + 1][j] == 0 && board[i + 1][j] == word[index]){
+			map[i + 1][j] = 1;
+			i = i + 1;
+		}
+		if (map[i][j - 1] == 0 && board[i][j - 1] == word[index]){
+			map[i][j - 1] = 1;
+			j = j - 1;
+		}
+		if (board[i][j] != word[index]){
+			return;
+		}
+		_exist(board, word, i, j, index + 1);
+		map[i][j] = 0;
+	}
+	bool exist(vector<vector<char>>& board, string word) {
+		int Row = board.size();
+		int Col = board[0].size();
+
+		int i = 0;
+		int flag = 0;
+		for (; i < Row; ++i){
+			int j = 0;
+			for (; j < Col; ++j){
+				if (board[i][j] = word[0]){
+					flag = 1;
+					break;
+				}
+				if (flag == 1){
+					break;
+				}
+			}
+		}
+		_exist(board, word, i, j, 0);
+		if (simple == 1){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+};
