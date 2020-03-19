@@ -445,67 +445,74 @@ using namespace std;
 //	return 0;
 //}
 
-#include <vector>
-class Solution {
-public:
-	int simple = 0;
-	void _exist(vector<vector<char>>& board, string word, int i, int j, int index){
-		static int maxRow = board.size();
-		static int maxCol = board[0].size();
-		static vector<vector<int>> map[maxRow][maxCol] = { 0 };
-		if (index == word.size){
-			simple = 1;
-			return;
-		}
-		if (map[i][j] == 0 && board[i][j] == word[index]){
-			map[i][j] = 1;
-		}
-		if (map[i - 1][j] == 0 && board[i - 1][j] == word[index]){
-			map[i - 1][j] = 1;
-			i = i - 1;
-		}
-		if (map[i][j + 1] == 0 && board[i][j + 1] == word[index]){
-			map[i][j + 1] = 1;
-			j = j + 1;
-		}
-		if (map[i + 1][j] == 0 && board[i + 1][j] == word[index]){
-			map[i + 1][j] = 1;
-			i = i + 1;
-		}
-		if (map[i][j - 1] == 0 && board[i][j - 1] == word[index]){
-			map[i][j - 1] = 1;
-			j = j - 1;
-		}
-		if (board[i][j] != word[index]){
-			return;
-		}
-		_exist(board, word, i, j, index + 1);
-		map[i][j] = 0;
-	}
-	bool exist(vector<vector<char>>& board, string word) {
-		int Row = board.size();
-		int Col = board[0].size();
+//#include <vector>
+//class Solution {
+//public:
+//	int simple = 0;
+//	void _exist(vector<vector<char>>& board, string word, int i, int j, int index){
+//		static int maxRow = board.size();
+//		static int maxCol = board[0].size();
+//		static vector<vector<int>> map[maxRow][maxCol] = { 0 };
+//		if (index == word.size){
+//			simple = 1;
+//			return;
+//		}
+//		if (map[i][j] == 0 && board[i][j] == word[index]){
+//			map[i][j] = 1;
+//		}
+//		if (map[i - 1][j] == 0 && board[i - 1][j] == word[index]){
+//			map[i - 1][j] = 1;
+//			i = i - 1;
+//		}
+//		if (map[i][j + 1] == 0 && board[i][j + 1] == word[index]){
+//			map[i][j + 1] = 1;
+//			j = j + 1;
+//		}
+//		if (map[i + 1][j] == 0 && board[i + 1][j] == word[index]){
+//			map[i + 1][j] = 1;
+//			i = i + 1;
+//		}
+//		if (map[i][j - 1] == 0 && board[i][j - 1] == word[index]){
+//			map[i][j - 1] = 1;
+//			j = j - 1;
+//		}
+//		if (board[i][j] != word[index]){
+//			return;
+//		}
+//		_exist(board, word, i, j, index + 1);
+//		map[i][j] = 0;
+//	}
+//	bool exist(vector<vector<char>>& board, string word) {
+//		int Row = board.size();
+//		int Col = board[0].size();
+//
+//		int i = 0;
+//		int flag = 0;
+//		for (; i < Row; ++i){
+//			int j = 0;
+//			for (; j < Col; ++j){
+//				if (board[i][j] = word[0]){
+//					flag = 1;
+//					break;
+//				}
+//				if (flag == 1){
+//					break;
+//				}
+//			}
+//		}
+//		_exist(board, word, i, j, 0);
+//		if (simple == 1){
+//			return true;
+//		}
+//		else{
+//			return false;
+//		}
+//	}
+//};
 
-		int i = 0;
-		int flag = 0;
-		for (; i < Row; ++i){
-			int j = 0;
-			for (; j < Col; ++j){
-				if (board[i][j] = word[0]){
-					flag = 1;
-					break;
-				}
-				if (flag == 1){
-					break;
-				}
-			}
-		}
-		_exist(board, word, i, j, 0);
-		if (simple == 1){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-};
+
+int main(){
+	long long a = 1, b = 2, c = 3;
+	printf("%d %d %d", a, b, c);
+	return 0;
+}
