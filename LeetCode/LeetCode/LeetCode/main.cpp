@@ -42,6 +42,14 @@ int main() {
 	while (a--){
 		printf("%d\n", 10);
 	}
+	vector<vector<int>*> v;
+	int i = 0;
+	const int *const p = &a;
+	int i = -1;
+	const int ic = i;
+	const int *pic = &ic;
+	//int *const cpi = &ic;
+	const int *const cpic = &ic;
 	return 0;
 }
 
