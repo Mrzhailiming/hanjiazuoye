@@ -174,42 +174,63 @@ using namespace std;
 //}
 
 
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
+//
+//int ret = 0;
+//int i = 0;
+//
+//void fun(int n, int* arr){
+//	if (n < 9){
+//		ret += arr[i++];
+//		return;
+//	}
+//	int cur = n % 10;
+//	fun(n / 10, arr);
+//	if (i < n)
+//	ret = ret * 10 + arr[i++];
+//}
+//
+//int main(){
+//	int n = 0;
+//
+//	cin >> n;
+//	int* arr = new int[1024];
+//	int i = 0;
+//	while (i < 3){
+//		scanf("%d", &arr[i++]);
+//	}
+//
+//	int flag = 0;
+//	if (n < 0){
+//		flag = 1;
+//		n = abs(n);
+//	}
+//
+//	fun(n, arr);
+//
+//	cout << ret;
+//
+//	return 0;
+//}
 
-int ret = 0;
-int i = 0;
 
-void fun(int n, int* arr){
-	if (n < 9){
-		ret += arr[i++];
-		return;
+
+class singleton{
+public:
+	static singleton* getInstance(){
+		if (instance == NULL){
+			instance = new singleton();
+		}
+		return instance;
 	}
-	int cur = n % 10;
-	fun(n / 10, arr);
-	if (i < n)
-	ret = ret * 10 + arr[i++];
-}
-
+private:
+	singleton();
+	singleton(singleton& cp);
+	static singleton* instance;
+};
+singleton* singleton::instance = new singleton();
 int main(){
-	int n = 0;
-
-	cin >> n;
-	int* arr = new int[1024];
-	int i = 0;
-	while (i < 3){
-		scanf("%d", &arr[i++]);
-	}
-
-	int flag = 0;
-	if (n < 0){
-		flag = 1;
-		n = abs(n);
-	}
-
-	fun(n, arr);
-
-	cout << ret;
-
+	singleton* in = singleton::getInstance();
 	return 0;
 }
