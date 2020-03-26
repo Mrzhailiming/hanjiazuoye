@@ -127,78 +127,89 @@ using namespace std;
 //	return 0;
 //}
 
+//
 
 
-#include <map>
-#include <math.h>
-#define max(a,b)    (((a) > (b)) ? (a) : (b))
-int rob(vector<int>& nums) {
-	map<int, bool> mp;
-	int len = nums.size();
-	int* dp = new int[len];
-	mp[0] = true;
-	if (len == 0){
-		return 0;
-	}
-	if (len == 1){
-		return nums[0];
-	}
-	if (len == 2){
-		return nums[0] > nums[1] ? nums[0] : nums[1];
-	}
-	if (nums[0] >= nums[1]){
-		mp[1] = true;
-		dp[0] = nums[0];
-		dp[1] = nums[0];
-	}
-	else{
-		mp[1] = false;
-		dp[0] = nums[0];
-		dp[1] = nums[1];
-	}
-	
-	int i = 2;
-	for (; i < len - 1; ++i){
+//#include <iostream>
+//using namespace std;
+//
+//void fun(int n, int* arr){
+//	//第n个 - 第n - 1g个 第 n - 2个 - 第n-1个
+//	double pi = 3.1415926;
+//	double ret = 0.0;
+//	int cur = n - 1;
+//
+//	while (cur > 0){
+//		ret += (pi * ((arr[cur] * arr[cur]) - (arr[cur - 1] * arr[cur - 1])));
+//		cur -= 2;
+//	}
+//	if (n % 2 == 1){
+//		ret += (pi * arr[0] * arr[0]);
+//	}
+//	printf("%.5lf\n", ret);
+//}
+//
+//
+//int main(){
+//
+//	int n = 0;
+//	
+//	cin >> n;
+//	int* arr = new int[n];
+//	int i = 0;
+//	for (; i < n; ++i){
+//		cin >> arr[i];
+//	}
+//	i = 0;
+//	for (; i < n - 1; ++i){
+//		int j = i + 1;
+//		for (; j < n; ++j){
+//			if (arr[i] > arr[j]){
+//				swap(arr[i], arr[j]);
+//			}
+//		}
+//	}
+//	fun(n, arr);
+//	return 0;
+//}
 
-		if (dp[i - 1] == dp[i - 2] + nums[i]){
-			dp[i] = dp[i - 1];
-			mp[i] = false;
-		}
-		else if (dp[i - 1] > dp[i - 2] + nums[i]){
-			dp[i] = dp[i - 1];
-			if (mp[i - 1] == true){
-				mp[i] = true;
-			}
-			else{
-				mp[i] = false;
-			}
-		}
-		else{
-			dp[i] = dp[i - 2] + nums[i];
-			if (mp[i - 2] == true){
-				mp[i] = true;
-			}
-			else{
-				mp[i] = false;
-			}
-		}
+
+#include <iostream>
+using namespace std;
+
+int ret = 0;
+int i = 0;
+
+void fun(int n, int* arr){
+	if (n < 9){
+		ret += arr[i++];
+		return;
 	}
-	if (dp[i - 1] > dp[i - 2] + nums[i]){
-		dp[i] = dp[i - 1];
-	}
-	else{
-		if (mp[i - 2] == false){
-			dp[i] = dp[i - 2] + nums[i];
-		}
-		else{
-			dp[i] = max(dp[i - 1], dp[i - 2]);
-		}
-	}
-	return dp[i];
+	int cur = n % 10;
+	fun(n / 10, arr);
+	if (i < n)
+	ret = ret * 10 + arr[i++];
 }
 
 int main(){
-	vector<int> v = { 1, 1, 3, 6, 7, 10, 7, 1, 8, 5, 9, 1, 4, 4, 3};
-	int ret = rob(v);
+	int n = 0;
+
+	cin >> n;
+	int* arr = new int[1024];
+	int i = 0;
+	while (i < 3){
+		scanf("%d", &arr[i++]);
+	}
+
+	int flag = 0;
+	if (n < 0){
+		flag = 1;
+		n = abs(n);
+	}
+
+	fun(n, arr);
+
+	cout << ret;
+
 	return 0;
 }
