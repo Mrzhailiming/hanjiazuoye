@@ -1,9 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <iostream>
-#include <map>
-
-using namespace std;
+//#include <stdio.h>
+//#include <iostream>
+//#include <map>
+//
+//using namespace std;
 //int a[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 //void fun(int *pa, int n);
 //int main()
@@ -511,8 +511,93 @@ using namespace std;
 //};
 
 
+//int main(){
+//	long long a = 1, b = 2, c = 3;
+//	printf("%d %d %d", a, b, c);
+//	return 0;
+//}
+
+
+//
+//#include <string>
+//#include <vector>
+//
+//#include <iostream>
+//using namespace std;
+
+//int main(){
+//	int userNum = 0;
+//	cin >> userNum;
+//	int* like = new int[userNum];
+//	int i = 0;
+//	while (i < userNum){
+//		cin >> like[i];
+//		++i;
+//	}
+//	int count = 0;
+//	cin >> count;
+//	while (count--){
+//		int l, r, k;
+//		cin >> l >> r >> k;
+//		//喜好值为k的用户个数
+//		int likenum = 0;
+//		int i = l - 1;
+//		while (i < r){
+//			if (like[i] == k){
+//				++likenum;
+//			}
+//			++i;
+//		}
+//		cout << likenum << endl;
+//	}
+//	return 0;
+//}
+
+
+//int main(){
+//	vector<string> v;
+//	string str = "111";
+//	string str2 = "222";
+//	v.push_back(str);
+//	v.push_back(str2);
+//	char ret = v[0][0];
+//	return 0;
+//}
+
+
+#include<iostream>  
+#include<sstream> 
+#include<string>  
+#include <vector>
+using namespace std;
+
+
 int main(){
-	long long a = 1, b = 2, c = 3;
-	printf("%d %d %d", a, b, c);
+	int n, m, c;
+	cin >> n >> m >> c;
+	int i = 0;
+	vector<vector<string>> ret;
+	while (i < n){
+		string str;
+		vector<string> part;
+		getline(cin, str);
+		//cin >> str;
+		istringstream tmp(str);
+		int j = 0;
+		string out;
+		while (tmp >> out){
+			part.push_back(out);
+			++j;
+		}
+		ret.push_back(part);
+		++i;
+	}
+
 	return 0;
 }
+//
+//int main(){
+//	string str;
+//	getline(cin, str);
+//	return 0;
+//}
