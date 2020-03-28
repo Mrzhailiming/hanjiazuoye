@@ -564,40 +564,128 @@
 //	return 0;
 //}
 
+//
+//#include<iostream>  
+//#include<sstream> 
+//#include<string>  
+//#include <vector>
+//using namespace std;
 
-#include<iostream>  
-#include<sstream> 
-#include<string>  
-#include <vector>
-using namespace std;
-
-
-int main(){
-	int n, m, c;
-	cin >> n >> m >> c;
-	int i = 0;
-	vector<vector<string>> ret;
-	while (i < n){
-		string str;
-		vector<string> part;
-		getline(cin, str);
-		//cin >> str;
-		istringstream tmp(str);
-		int j = 0;
-		string out;
-		while (tmp >> out){
-			part.push_back(out);
-			++j;
-		}
-		ret.push_back(part);
-		++i;
-	}
-
-	return 0;
-}
+//
+//int main(){
+//	int n, m, c;
+//	cin >> n >> m >> c;
+//	int i = 0;
+//	vector<vector<string>> ret;
+//	while (i < n){
+//		string str;
+//		vector<string> part;
+//		getline(cin, str);
+//		//cin >> str;
+//		istringstream tmp(str);
+//		int j = 0;
+//		string out;
+//		while (tmp >> out){
+//			part.push_back(out);
+//			++j;
+//		}
+//		ret.push_back(part);
+//		++i;
+//	}
+//
+//	return 0;
+//}
 //
 //int main(){
 //	string str;
 //	getline(cin, str);
 //	return 0;
 //}
+//
+//int main(){
+//	vector<int> v;
+//	int a;
+//	while (cin >> a){
+//		v.push_back(a);
+//		if (cin.get() == '\n'){
+//			break;
+//		}
+//		
+//	}
+//	v.resize(0);
+//	return 0;
+//}
+//
+//
+//#include <iostream>
+//#include <string>
+//#include <string.h>
+//#include <vector>
+//
+//using namespace std;
+//
+//
+//int main(){
+//	char str[1024] = { 0 };
+//	while (cin >> str){
+//		vector<string> v;
+//		char* tmp = strtok(str, ",");
+//		while (tmp != NULL){
+//			v.push_back(tmp);
+//			tmp = strtok(NULL, ",");
+//		}
+//		//≈≈–Ú
+//		int len = v.size();
+//		int i = 0;
+//		for (; i < len - 1; ++i){
+//			int j = i;
+//			for (; j < len; ++j){
+//				if (v[i] > v[j]){
+//					swap(v[i], v[j]);
+//				}
+//			}
+//		}
+//		i = 0;
+//		for (; i < len; ++i){
+//			cout << v[i] << ",";
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+
+int main(){
+	char str[1024] = { 0 };
+	while (cin >> str){
+		vector<string> v;
+		char* tmp = strtok(str, ",");
+		while (tmp != NULL){
+			v.push_back(tmp);
+			tmp = strtok(NULL, ",");
+		}
+		//≈≈–Ú
+		int len = v.size();
+		int i = 0;
+		for (; i < len - 1; ++i){
+			int j = i;
+			for (; j < len; ++j){
+				if (v[i] > v[j]){
+					swap(v[i], v[j]);
+				}
+			}
+		}
+		i = 0;
+		for (; i < len; ++i){
+			cout << v[i] << ",";
+		}
+		cout << endl;
+	}
+	return 0;
+}
