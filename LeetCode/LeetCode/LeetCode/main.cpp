@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <iostream>
 #include <vector>
 #include <math.h>
 using namespace std;
@@ -213,24 +214,159 @@ using namespace std;
 //
 //	return 0;
 //}
+//
+//
+////饿汉模式
+//class singleton{
+//public:
+//	 static singleton* getInstance(){
+//		if (instance == NULL){
+//			instance = new singleton();
+//		}
+//		return instance;
+//	}
+//private:
+//	singleton();
+//	singleton(singleton& cp);
+//	static singleton* instance;
+//};
+//singleton* singleton::instance = new singleton();
+//int main(){
+//	singleton* in = singleton::getInstance();
+//	return 0;
+//}
 
 
+//
+//
+////0-1背包问题
+//#include <algorithm>
+//void fun(int* v, int* p, int len, int capacity){
+//	int dp[100][100] = { 0 };
+//	//先初始化有多少列
+//
+//	int i = 1;
+//	int j;
+//	for (i = 1; i <= len; ++i){
+//		j = 1;
+//		for (j = 1; j <= capacity; ++j){
+//			//如果容量大于第i个商品的体积
+//			if (j >= v[i - 1]){
+//				dp[i][j] = max(dp[i - 1][j - v[i - 1]] + p[i - 1], dp[i - 1][j]);
+//			}
+//			else{
+//				dp[i][j] = dp[i - 1][j];
+//			}
+//		}
+//	}
+//	cout << dp[len][capacity] << endl;
+//}
+//
+//int main(){
+//	//20
+//	int v[] = { 15, 10, 2, 5, 8 };
+//	int p[] = { 16, 10, 6, 7, 9 };
+//	fun(v, p, 5, 20);
+//	return 0;
+//}
 
-class singleton{
-public:
-	static singleton* getInstance(){
-		if (instance == NULL){
-			instance = new singleton();
-		}
-		return instance;
+
+//切钢条问题
+#include <algorithm>
+//
+//void fun(int* arr, int n){
+//	//定义C[i] 为长度 i的钢条所能够获得的最大利润
+//	//切在 第j个, 或者不切
+//	// C[i] = max(p[i], p[j] + C[i - j])
+//	int c[100] = { 0 };
+//	int rec[100] = { 0 };
+//	int i = 1;
+//	for (; i <= n; ++i){
+//		int j = 1;
+//		//切在第i个,等于不切
+//		rec[i] = i;
+//		int tmp = arr[i - 1];
+//		for (; j < i; ++j){
+//			if (tmp < arr[j - 1] + c[i - j]){//注意数组arr是从0开始的
+//				tmp = arr[j - 1] + c[i - j];
+//				rec[i] = j;
+//			}
+//		}
+//		c[i] = tmp;
+//	}
+//	cout << c[n] << endl;
+//	while (n > 0){
+//		cout << rec[n] << endl;
+//		n -= rec[n];
+//	}
+//}
+//
+//void fun(int* arr, int n){
+//	//定义c[i] 是长度为i的钢条能获得的最大利润
+//	//c[i] = max(arr[i], arr[j] + c[i-j]), 不切 或者切在j位置上
+//	int c[100] = { 0 };
+//	int rec[100] = { 0 };
+//	int i = 1;
+//	for (; i <= n; ++i){
+//		c[i] = arr[i];
+//		rec[i] = i;
+//		int j = 1;
+//		for (; j < i; ++j){
+//			if (c[i] < arr[j] + c[i - j]){
+//				c[i] = arr[j] + c[i - j];
+//				rec[i] = j;
+//			}
+//		}
+//	}
+//	cout << c[n] << endl;
+//	while (n > 0){
+//		cout << rec[n] << endl;
+//		n -= rec[n];
+//	}
+// }
+//
+//int main(){
+//	
+//	int p[] = { 0 ,1, 5, 7, 9, 10};
+//	fun(p, 5);
+//	return 0;
+//}
+
+
+void fun(int* p, int n){
+	//定义 arr[i,j] 为矩阵链U(i, j)的最小标量乘次数
+	//要保证i <= j , 且i = j时, 次数为0
+	int arr[10][10] = { 0 };
+	int i = 0;
+	for (i = 0; i <= n; ++i){
+		arr[i][i] = 0;//对角线
 	}
-private:
-	singleton();
-	singleton(singleton& cp);
-	static singleton* instance;
-};
-singleton* singleton::instance = new singleton();
+	int len = 2;
+	//从长度为2,一直到长度为n
+	for (len = 2; len <= n; ++len){
+		//i从第一个位置开始
+		int i = 1;
+		for (i = 1; i <= n - len + 1; ++i){
+			//j的位置是和i相差len-1个
+			int j = i + len - 1;
+			//枚举结合的位置k, 从i开始, 到j-1结束
+			int k = i;
+			arr[i][j] = INT_MAX;
+			for (k = i; k < j; ++k){
+				//情况为k的时候,计算次数的大小
+				int q = arr[i][k] + arr[k + 1][j] + p[i] * p[k] * p[j];
+				if (q < arr[i][j]){
+					arr[i][j] = q;
+				}
+			}
+		}
+	}
+	cout << arr[1][n] << endl;
+}
+
 int main(){
-	singleton* in = singleton::getInstance();
+
+	int p[] = { 3, 4, 6, 1, 3};
+	fun(p, 4);
 	return 0;
 }
