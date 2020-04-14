@@ -790,31 +790,41 @@ using namespace std;
 //	}
 //	return ret;
 //}
+#include <iostream>
+class Pa{
+private:
+	int a;
+};
 
 int main(){
-
-
-	short i = 65537;
-	//vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
-	//findUnsortedSubarray(nums);
-	/*vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
-	compress(chars);*/
-	/*string str("A man, a plan, a canal: Panama");
-	isPalindrome(str);*/
-	/*vector<int> nums = { 1, 4 };
-	searchRange(nums, 4);*/
-	/*string a("  000000012121");
-	myAtoi(a);*/
-	//string a("42");
-	//string b("1");
-	//addBinary(a, b);
-	/*vector<int> nums = { 2, 2, 3, 1};
-	int ret = thirdMax(nums);
-	cout << ret << endl;*/
-	/*string name("plpkoh");
-	string typed("plppkkh");
-	int n = 2;
-	n += n -= n * n;*/
-	//isLongPressedName(name, typed);
+	Pa a;
+	a.a = 1;
 	return 0;
 }
+//int main(){
+//
+//
+//	short i = 65537;
+//	//vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
+//	//findUnsortedSubarray(nums);
+//	/*vector<char> chars = {'a', 'a', 'a', 'a','b','c','d' };
+//	compress(chars);*/
+//	/*string str("A man, a plan, a canal: Panama");
+//	isPalindrome(str);*/
+//	/*vector<int> nums = { 1, 4 };
+//	searchRange(nums, 4);*/
+//	/*string a("  000000012121");
+//	myAtoi(a);*/
+//	//string a("42");
+//	//string b("1");
+//	//addBinary(a, b);
+//	/*vector<int> nums = { 2, 2, 3, 1};
+//	int ret = thirdMax(nums);
+//	cout << ret << endl;*/
+//	/*string name("plpkoh");
+//	string typed("plppkkh");
+//	int n = 2;
+//	n += n -= n * n;*/
+//	//isLongPressedName(name, typed);
+//	return 0;
+//}
