@@ -126,8 +126,39 @@ int main(){
 #endif
 
 
+unsigned long long fiboNum(int n){
+	unsigned long long pre = 1;
+	unsigned long long next = 2;
+	if (n < 3){
+		return n;
+	}
+	int i = 3;
+	unsigned long long cur;
+	for (i = 3; i <= n; ++i){
+		cur = pre + next;
+		pre = next;
+		next = cur;
+	}
+	if (cur < 0xf4020){
+		return cur;
+	}
+	else{
+		int i = 0;
+		unsigned long long lastSix = 0;
+		/*for (i = 0; i < 20; ++i){
+			lastSix = (lastSix < i) | 1;
+			}*/
+		lastSix = lastSix | 0xf4020;
+		cur = cur & lastSix;
+		return cur;
+	}
+}
 
 int main(){
-	
+	int n = 0;
+	while (cin >> n){
+		unsigned long long ret = fiboNum(n);
+		cout << "ºÍ" << ret << endl;
+	}
 	return 0;
 }
