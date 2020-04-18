@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{78A2CC40-C8D8-4D70-8B18-134368C21594}</ProjectGuid>
+    <ProjectGuid>{A8F25C0F-E1CA-4241-9501-11694D704B55}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>day0414</RootNamespace>
-    <ProjectName>0414</ProjectName>
+    <RootNamespace>My0418</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,7 +76,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="源.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
