@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "牛客", "牛客\牛客.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "day0414", "day0414\day0414.vcxproj", "{78A2CC40-C8D8-4D70-8B18-134368C21594}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0417", "0417\0417.vcxproj", "{04D9B653-2B0E-4548-B6DD-EB1F4CB8B9A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0416", "0416\0416.vcxproj", "{91D1A412-6F08-426E-A2F5-D3DC472E8919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +25,14 @@ Global
 		{78A2CC40-C8D8-4D70-8B18-134368C21594}.Debug|Win32.Build.0 = Debug|Win32
 		{78A2CC40-C8D8-4D70-8B18-134368C21594}.Release|Win32.ActiveCfg = Release|Win32
 		{78A2CC40-C8D8-4D70-8B18-134368C21594}.Release|Win32.Build.0 = Release|Win32
+		{04D9B653-2B0E-4548-B6DD-EB1F4CB8B9A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04D9B653-2B0E-4548-B6DD-EB1F4CB8B9A5}.Debug|Win32.Build.0 = Debug|Win32
+		{04D9B653-2B0E-4548-B6DD-EB1F4CB8B9A5}.Release|Win32.ActiveCfg = Release|Win32
+		{04D9B653-2B0E-4548-B6DD-EB1F4CB8B9A5}.Release|Win32.Build.0 = Release|Win32
+		{91D1A412-6F08-426E-A2F5-D3DC472E8919}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91D1A412-6F08-426E-A2F5-D3DC472E8919}.Debug|Win32.Build.0 = Debug|Win32
+		{91D1A412-6F08-426E-A2F5-D3DC472E8919}.Release|Win32.ActiveCfg = Release|Win32
+		{91D1A412-6F08-426E-A2F5-D3DC472E8919}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
