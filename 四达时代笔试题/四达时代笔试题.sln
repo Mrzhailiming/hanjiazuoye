@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "四达时代笔试题", "四达时代笔试题\四达时代笔试题.vcxproj", "{17F5E354-19CA-434D-A721-C19EBD623F7D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{771D7899-CDF7-4049-9873-FABB46CF56A6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "米哈游", "米哈游\米哈游.vcxproj", "{ADEEF01B-553F-4D29-89EE-37275728E1D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +19,14 @@ Global
 		{17F5E354-19CA-434D-A721-C19EBD623F7D}.Debug|Win32.Build.0 = Debug|Win32
 		{17F5E354-19CA-434D-A721-C19EBD623F7D}.Release|Win32.ActiveCfg = Release|Win32
 		{17F5E354-19CA-434D-A721-C19EBD623F7D}.Release|Win32.Build.0 = Release|Win32
+		{771D7899-CDF7-4049-9873-FABB46CF56A6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{771D7899-CDF7-4049-9873-FABB46CF56A6}.Debug|Win32.Build.0 = Debug|Win32
+		{771D7899-CDF7-4049-9873-FABB46CF56A6}.Release|Win32.ActiveCfg = Release|Win32
+		{771D7899-CDF7-4049-9873-FABB46CF56A6}.Release|Win32.Build.0 = Release|Win32
+		{ADEEF01B-553F-4D29-89EE-37275728E1D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ADEEF01B-553F-4D29-89EE-37275728E1D2}.Debug|Win32.Build.0 = Debug|Win32
+		{ADEEF01B-553F-4D29-89EE-37275728E1D2}.Release|Win32.ActiveCfg = Release|Win32
+		{ADEEF01B-553F-4D29-89EE-37275728E1D2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
